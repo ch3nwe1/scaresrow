@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>元组与列表 - 稻草人日记</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5143\u7ec4\u4e0e\u5217\u8868";
+    var mkdocs_page_input_path = "python/\u57fa\u7840\u6559\u7a0b/\u5143\u7ec4\u4e0e\u5217\u8868.md";
+    var mkdocs_page_url = "/scaresrow/python/\u57fa\u7840\u6559\u7a0b/\u5143\u7ec4\u4e0e\u5217\u8868/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> 稻草人日记</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">主页</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">程序</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <span class="caption-text">Python</span>
+    <ul class="subnav">
+                <li class="toctree-l3 current">
+                    
+    <span class="caption-text">基础教程</span>
+    <ul class="subnav">
+                <li class="toctree-l4 current">
+                    
+    <a class="current" href="./">元组与列表</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l5"><a href="#_1">元组与列表</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l6" href="#_2">序列概述</a></li>
+        
+            <li><a class="toctree-l6" href="#_3">通用的序列操作</a></li>
+        
+            <li><a class="toctree-l6" href="#_6">列表</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="toctree-l4">
+                    
+    <a class="" href="../字符串/">字符串</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                </li>
+                <li class="">
+                    
+    <span class="caption-text">Java</span>
+    <ul class="subnav">
+                <li class="toctree-l3">
+                    
+    <a class="" href="../../../java/String/">字符串</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../about/">关于</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">稻草人日记</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>基础教程 &raquo;</li>
+        
+      
+        
+          <li>Python &raquo;</li>
+        
+      
+        
+          <li>程序 &raquo;</li>
+        
+      
+    
+    <li>元组与列表</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">元组与列表</h1>
+<h2 id="_2">序列概述</h2>
+<p>Python中最基本的数据结构是序列，在多种序列中，最常用的两种分别是<strong>列表</strong>和<strong>元组</strong>，另外一种重要的序列是字符串。在列表中表示序列的方式是中括号<strong>[]</strong>，各个元素之间用逗号隔开,如下所示：</p>
+<p>​       <code>edward = ['Edward Gumby', 42]</code></p>
+<h2 id="_3">通用的序列操作</h2>
+<h3 id="_4">索引</h3>
+<p>序列中所有元素都有编号——从0开始递增，例如：</p>
+<pre><code class="python">&gt;&gt;&gt; greeting = 'Hello'
+&gt;&gt;&gt; greeting[0]
+'H'
+</code></pre>
+
+<p>在python中，可以通过索引来获取元素，如果索引值超出了序列的长度，则会报错<code>IndexError: list index out of range</code>，与其他语言不同的是，python可以使用负索引，即从从右（最后一个元素）往左计数，如下：</p>
+<pre><code class="python">&gt;&gt;&gt; greeting[-1]
+'o'
+</code></pre>
+
+<h3 id="_5">切片</h3>
+<p>在获取单个元素我们可以使用索引，但是如果获取指定范围的多个元素时，可以使用切片来实现，及两个索引，中间用冒号隔开。</p>
+<pre><code class="python">&gt;&gt;&gt; tag = '&lt;a href=&quot;http://www.python.org&quot;&gt;Python web site&lt;/a&gt;'
+&gt;&gt;&gt; tag[9:30]
+'http://www.python.org'
+</code></pre>
+
+<p>从上面的代码我们可以看出，打印的范围是包含第一个索引值<font color="red"><strong>9</strong></font>对应的<font color="red"><strong>h</strong></font>,但是不包含<font color="red"><strong>30</strong></font>对应的双引号（<font color="red"><strong>”</strong></font>），<b>但是必须是第一个索引的位置小于第二个索引的位置。否则为空</b>。</p>
+<pre><code class="python">&gt;&gt;&gt; tag[30:9]
+''
+</code></pre>
+
+<p>同样，我们可以在切片中使用负数索引。系统将会从左至右匹配，第一个索引必须小于第二个索引，否则将无法匹配到内容。</p>
+<pre><code class="python">&gt;&gt;&gt; tag[-19:-4]
+'Python web site'
+&gt;&gt;&gt; tag[-4:-19]
+''
+</code></pre>
+
+<p>我们也可以正负索引同时使用：</p>
+<pre><code class="python">&gt;&gt;&gt; tag[32:-4]
+'http://www.python.org'
+</code></pre>
+
+<p>与索引不同的是，切片中的第二个索引如果超出了序列的长度，是不会报错了，只会匹配到最后一个。</p>
+<pre><code class="python">&gt;&gt;&gt; numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+&gt;&gt;&gt; numbers[9, 100]
+[9, 10]
+</code></pre>
+
+<p>如果你只想从地一个元素匹配到某一个位置，或者从某一个位置匹配到最后一个元素，则该索引位置可以省略，如果想复制整个序列，则两个索引都可以省略</p>
+<pre><code class="python">&gt;&gt;&gt; numbers[9:]
+[9, 10]
+&gt;&gt;&gt; numbers[:2]
+[0, 1]
+&gt;&gt;&gt; numbers[:]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre>
+
+<p>执行切片操作时,你显式或隐式地指定起点和终点,但通常省略另一个参数,即步长。在普通切片中,步长为1。这意味着从一个元素移到下一个元素,因此切片包含起点和终点之间的所有元素。</p>
+<pre><code class="python">&gt;&gt;&gt; numbers[0:10:1]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+&gt;&gt;&gt; numbers[0:10:2]
+[1, 3, 5, 7, 9]
+</code></pre>
+
+<p>如果指定了步长为负值，则序列的匹配逻辑不再是从左至右，而是从右至左。而且第一个索引的实际位置必须大于第二个索引的实际位置，无则无法匹配到任何内容</p>
+<pre><code class="python">&gt;&gt;&gt; numbers[8:3:-1]
+[9, 8, 7, 6, 5]
+&gt;&gt;&gt; numbers[10:0:-2]
+[10, 8, 6, 4, 2]
+&gt;&gt;&gt; numbers[0:10:-2]
+[]
+</code></pre>
+
+<h3>序列相加</h3>
+
+<p>两个序列之间是可以相加，可视为合并，但不同类型间的序列不可以相加</p>
+<pre><code class="python">&gt;&gt;&gt; [1, 2, 3] + [4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+&gt;&gt;&gt; 'Hello,' + 'world!'
+'Hello,world!'
+&gt;&gt;&gt;  [1, 2, 3] + 'world!'
+File &quot;&lt;stdin&gt;&quot;, line 1
+    [1, 2, 3] + 'world!'
+    ^
+IndentationError: unexpected indent
+</code></pre>
+
+<h3>乘法</h3>
+
+<p>将序列与数x相乘时,将重复这个序列x次来创建一个新序列:</p>
+<pre><code class="python">&gt;&gt;&gt; 'python' * 5
+'pythonpythonpythonpythonpython'
+&gt;&gt;&gt; [42] * 10
+[42, 42, 42, 42, 42, 42, 42, 42, 42, 42]
+</code></pre>
+
+<h3>成员资格</h3>
+
+<p>要检查特定的值是否包含在序列中,可使用运算符in。这个运算符与前面讨论的运算符(如乘法或加法运算符)稍有不同。它检查是否满足指定的条件,并返回相应的值:满足时返回True,不满足时返回False。这样的运算符称为<strong>布尔运算符</strong>,而前述真值称为布尔值。</p>
+<pre><code class="python">&gt;&gt;&gt; permissions = 'rw'
+&gt;&gt;&gt; 'w' in permissions
+True
+&gt;&gt;&gt; 'x' in permissions
+False
+</code></pre>
+
+<h2 id="_6">列表</h2>
+<h3 id="list">一、函数list</h3>
+<p>list函数可以将字符串转换成列表</p>
+<pre><code class="python">&gt;&gt;&gt; list('Hello')
+['H', 'e', 'l', 'l', 'o']
+</code></pre>
+
+<p>同样也可以将字符列表转换成字符串，<code>‘’.join(somelist)</code></p>
+<h3 id="_7">二、基本的列表操作</h3>
+<h4 id="1">1.修改列表：给元素赋值</h4>
+<p>给列表中的某一个位置的元素赋值，<code>变量名[索引值]=实际值</code></p>
+<pre><code class="python">&gt;&gt;&gt; x = [1, 1, 1]
+&gt;&gt;&gt; x[1] = 2
+&gt;&gt;&gt; x
+[1, 2, 1]
+</code></pre>
+
+<h4 id="2">2.删除元素</h4>
+<p>从列表中删除元素也很容易,只需使用del语句即可。</p>
+<pre><code class="python">&gt;&gt;&gt; names = ['Alice', 'Beth', 'Cecil', 'Dee-Dee', 'Earl']
+&gt;&gt;&gt; del names[2]
+&gt;&gt;&gt; names
+['Alice', 'Beth', 'Dee-Dee', 'Earl']
+</code></pre>
+
+<h3 id="_8">三、列表方法</h3>
+<h4 id="1-append">1. append</h4>
+<p>方法append用于将一个对象附加到列表末尾。但是需要注意的是该方法是修改原对象，可以通过<code>id()</code>方法查看对象在内存中的地址来验证</p>
+<pre><code class="python">&gt;&gt;&gt; lst = [1, 2, 3]
+&gt;&gt;&gt; lst.append(4)
+&gt;&gt;&gt; lst
+[1, 2, 3, 4]
+</code></pre>
+
+<h4 id="2-clear">2. clear</h4>
+<p>方法clear就地清空列表的内容。</p>
+<pre><code class="python">&gt;&gt;&gt; lst = [1, 2, 3]
+&gt;&gt;&gt; lst.clear()
+&gt;&gt;&gt; lst
+[]
+</code></pre>
+
+<h4 id="3-copy">3. copy</h4>
+<p>方法 copy 复制列表。前面说过,常规复制只是将另一个名称关联到列表。</p>
+<pre><code class="python">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = a.copy()
+&gt;&gt;&gt; b[1] = 4
+&gt;&gt;&gt; a
+[1, 2, 3]
+
+</code></pre>
+
+<h4 id="4-count">4. count</h4>
+<p>方法count计算指定的元素在列表中出现了多少次。</p>
+<pre><code class="python">&gt;&gt;&gt; ['to', 'be', 'or', 'not', 'to', 'be'].count('to')
+2
+&gt;&gt;&gt; x = [[1, 2], 1, 1, [2, 1, [1, 2]]]
+&gt;&gt;&gt; x.count(1)
+2
+&gt;&gt;&gt; x.count([1, 2])
+1
+
+</code></pre>
+
+<h4 id="5-extend">5. extend</h4>
+<p>方法extend让你能够同时将多个值附加到列表末尾,为此可将这些值组成的序列作为参数提
+供给方法extend。换而言之,你可使用一个列表来扩展另一个列表。</p>
+<pre><code class="python">&gt;&gt;&gt; a = [1, 2, 3]
+&gt;&gt;&gt; b = [4, 5, 6]
+&gt;&gt;&gt; a.extend(b)
+&gt;&gt;&gt; a
+[1, 2, 3, 4, 5, 6]
+
+</code></pre>
+
+<h4 id="6-index">6. index</h4>
+<p>方法index在列表中查找指定值第一次出现的索引。</p>
+<pre><code class="python">&gt;&gt;&gt; knights = ['We', 'are', 'the', 'knights', 'who', 'say', 'ni']
+&gt;&gt;&gt; knights.index('who')
+4
+</code></pre>
+
+<h4 id="7-insert">7. insert</h4>
+<p>方法insert用于将一个对象插入列表。</p>
+<pre><code class="python">&gt;&gt;&gt; numbers = [1, 2, 3, 5, 6, 7]
+&gt;&gt;&gt; numbers.insert(3, 'four')
+&gt;&gt;&gt; numbers
+[1, 2, 3, 'four', 5, 6, 7]
+</code></pre>
+
+<h4 id="8-pop">8. pop</h4>
+<p>方法pop从列表中删除一个元素(末尾为最后一个元素),并返回这一元素。</p>
+<pre><code class="python">&gt;&gt;&gt; x = [1, 2, 3]
+&gt;&gt;&gt; x.pop()
+3
+&gt;&gt;&gt; x
+[1, 2]
+&gt;&gt;&gt; x.pop(0)
+1
+&gt;&gt;&gt; x
+[2]
+</code></pre>
+
+<h4 id="9-remove">9. remove</h4>
+<p>方法remove用于删除第一个为指定值的元素。</p>
+<pre><code class="python">&gt;&gt;&gt; x = ['to', 'be', 'or', 'not', 'to', 'be']
+&gt;&gt;&gt; x.remove('be')
+&gt;&gt;&gt; x
+['to', 'or', 'not', 'to', 'be']
+</code></pre>
+
+<h4 id="10-reverse">10. reverse</h4>
+<p>方法reverse按相反的顺序排列列表中的元素</p>
+<pre><code class="python">&gt;&gt;&gt; x = [1, 2, 3]
+&gt;&gt;&gt; x.reverse()
+&gt;&gt;&gt; x
+[3, 2, 1]
+
+</code></pre>
+
+<h4 id="11-sortsorted">11. sort(sorted)</h4>
+<p>方法sort用于对列表就地排序 1 。就地排序意味着对原来的列表进行修改,使其元素按顺序
+排列,而不是返回排序后的列表的副本。</p>
+<pre><code class="python">&gt;&gt;&gt; x = [4, 6, 2, 1, 7, 9]
+&gt;&gt;&gt; x.sort()
+&gt;&gt;&gt; x
+[1, 2, 4, 6, 7, 9]
+</code></pre>
+
+<pre><code class="python">&gt;&gt;&gt; x = [4, 6, 2, 1, 7, 9]
+&gt;&gt;&gt; y = sorted(x)
+&gt;&gt;&gt; x
+[4, 6, 2, 1, 7, 9]
+&gt;&gt;&gt; y
+[1, 2, 4, 6, 7, 9]
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../字符串/" class="btn btn-neutral float-right" title="字符串">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../.." class="btn btn-neutral" title="主页"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../字符串/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+
+</body>
+</html>
