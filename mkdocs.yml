@@ -1,2 +1,16 @@
 site_name: 稻草人日记
+site_url: https://ch3nwe1.github.io/scaresrow
 
+nav:
+    - 主页: index.md
+    - 程序: 
+      - Python: 
+        - 基础教程: 
+            - 元组与列表: python/基础教程/元组与列表.md
+            - 字符串: python/基础教程/字符串.md
+      - Java: 
+        - 字符串: java/String.md
+    - 关于: about.md
+
+
+theme: readthedocs
