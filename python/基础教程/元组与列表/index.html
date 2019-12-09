@@ -18,7 +18,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "\u5143\u7ec4\u4e0e\u5217\u8868";
-    var mkdocs_page_input_path = "python/\u57fa\u7840\u6559\u7a0b/\u5143\u7ec4\u4e0e\u5217\u8868.md";
+    var mkdocs_page_input_path = "python\\\u57fa\u7840\u6559\u7a0b\\\u5143\u7ec4\u4e0e\u5217\u8868.md";
     var mkdocs_page_url = "/scaresrow/python/\u57fa\u7840\u6559\u7a0b/\u5143\u7ec4\u4e0e\u5217\u8868/";
   </script>
   
@@ -79,6 +79,8 @@
             <li><a class="toctree-l6" href="#_3">通用的序列操作</a></li>
         
             <li><a class="toctree-l6" href="#_6">列表</a></li>
+        
+            <li><a class="toctree-l6" href="#_9">元组</a></li>
         
         </ul>
     
@@ -396,6 +398,29 @@ False
 &gt;&gt;&gt; y
 [1, 2, 4, 6, 7, 9]
 </code></pre>
+
+<h2 id="_9">元组</h2>
+<p>元组语法很简单，只要将一些值用逗号分隔，就能自动创建一个元组。</p>
+<pre><code class="python">&gt;&gt;&gt; 1, 2, 3
+(1, 2, 3)
+</code></pre>
+
+<p>如果元组中只有一个值，必须在其后加上一个逗号</p>
+<pre><code class="python">&gt;&gt;&gt;1,
+(1,)
+</code></pre>
+
+<p>函数tuple的工作原理与list很像：它将一个序列作为参数，并将其转换为元组①。如果参数
+已经是元组，就原封不动地返回它。</p>
+<pre><code class="python">&gt;&gt;&gt; tuple([1, 2, 3])
+(1, 2, 3)
+&gt;&gt;&gt; tuple('abc')
+('a', 'b', 'c')
+&gt;&gt;&gt; tuple((1, 2, 3))
+(1, 2, 3)
+</code></pre>
+
+<p><b>注意：元组与列表的区别在于列表可以修改，而元组不可以</b></p>
               
             </div>
           </div>
