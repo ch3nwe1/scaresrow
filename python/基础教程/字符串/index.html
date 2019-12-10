@@ -18,7 +18,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "\u5b57\u7b26\u4e32";
-    var mkdocs_page_input_path = "python\\\u57fa\u7840\u6559\u7a0b\\\u5b57\u7b26\u4e32.md";
+    var mkdocs_page_input_path = "python/\u57fa\u7840\u6559\u7a0b/\u5b57\u7b26\u4e32.md";
     var mkdocs_page_url = "/scaresrow/python/\u57fa\u7840\u6559\u7a0b/\u5b57\u7b26\u4e32/";
   </script>
   
@@ -67,6 +67,10 @@
     <ul class="subnav">
                 <li class="toctree-l4">
                     
+    <a class="" href="../注释/">注释</a>
+                </li>
+                <li class="toctree-l4">
+                    
     <a class="" href="../元组与列表/">元组与列表</a>
                 </li>
                 <li class="toctree-l4 current">
@@ -83,6 +87,23 @@
             <li><a class="toctree-l6" href="#str-repr">str 和 repr</a></li>
         
             <li><a class="toctree-l6" href="#_3">长字符串、原始字符串和字节</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l5"><a href="#_4">格式化字符串</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l6" href="#_5">替換字段名</a></li>
+        
+            <li><a class="toctree-l6" href="#_6">基本转换</a></li>
+        
+            <li><a class="toctree-l6" href="#_7">宽度、精度和千位分隔符</a></li>
+        
+            <li><a class="toctree-l6" href="#0">符号、对齐和用 0 填充</a></li>
+        
+            <li><a class="toctree-l6" href="#_8">字符串方法</a></li>
         
         </ul>
     
@@ -216,6 +237,266 @@ world!
 字符串包含的每个字符都保持原样。</p>
 <pre><code class="python">&gt;&gt;&gt; print(r'C:\nowhere')
 C:\nowhere
+</code></pre>
+
+<h3 id="_4">格式化字符串</h3>
+<p>在格式字符串中,最激动人心的部分为替换字段。替换字段由如下部分组成,其中每个部分都是可选的。</p>
+<ol>
+<li><strong>字段名</strong>:索引或标识符,指出要设置哪个值的格式并使用结果来替换该字段。除指定值外,还可指定值的特定部分,如列表的元素。</li>
+<li><strong>转换标志</strong>:跟在叹号后面的单个字符。当前支持的字符包括r(表示repr)、s(表示str)和 a(表示ascii)。如果你指定了转换标志,将不使用对象本身的格式设置机制,而是使用指定的函数将对象转换为字符串,再做进一步的格式设置。</li>
+<li><strong>格式说明符</strong>:跟在冒号后面的表达式(这种表达式是使用微型格式指定语言表示的)。格式说明符让我们能够详细地指定最终的格式,包括格式类型(如字符串、浮点数或十六进制数),字段宽度和数的精度,如何显示符号和千位分隔符,以及各种对齐和填充方式。</li>
+</ol>
+<h4 id="_5">替換字段名</h4>
+<p>在最简单的情况下,只需向format提供要设置其格式的未命名参数,并在格式字符串中使用未命名字段。此时,将按顺序将字段和参数配对。你还可给参数指定名称,这种参数将被用于相应的替换字段中。你可混合使用这两种方法。</p>
+<pre><code class="python">&gt;&gt;&gt;  &quot;{foo} {} {bar} {}&quot;.format(1, 2, bar=4, foo=3)
+'3 1 4 2'
+</code></pre>
+
+<p>其中，參數foo和bar分別指定了4和3, 另外兩個參數按順序分別指定了1和2，和可以通過索引來指定相應的未命名參數</p>
+<pre><code class="python">&gt;&gt;&gt;  &quot;{foo} {1} {bar} {0}&quot;.format(1, 2, bar=4, foo=3)
+'3 2 4 1'
+</code></pre>
+
+<p>{0}指向第一個参数，{1} 指向第二個参数</p>
+<p>除了使用索引外，还可使用句点表示法来访问导入的模块中的方法、属性、变量和函数</p>
+<pre><code class="python">&gt;&gt;&gt; fullname = [&quot;Alfred&quot;, &quot;Smoketoomuch&quot;]
+&gt;&gt;&gt; &quot;Mr {name[1]}&quot;.format(name=fullname)
+'Mr Smoketoomuch'
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; tmpl = &quot;The {mod.__name__} module defines the value {mod.pi} for π&quot;
+&gt;&gt;&gt; tmpl.format(mod=math)
+'The math module defines the value 3.141592653589793 for π'
+</code></pre>
+
+<h4 id="_6">基本转换</h4>
+<p>指定要在字段中包含的值后,就可添加有关如何设置其格式的指令了。首先,可以提供一个转换标志。</p>
+<pre><code class="python">&gt;&gt;&gt; print(&quot;{pi!s} {pi!r} {pi!a}&quot;.format(pi=&quot;π&quot;))
+π 'π' '\u03c0'
+</code></pre>
+
+<p>上述三个标志(s、r和a)指定分别使用str、repr和ascii进行转换。函数str通常创建外观普通的字符串版本(这里没有对输入字符串做任何处理)。函数repr尝试创建给定值的Python表示(这里是一个字符串字面量)。函数ascii创建只包含ASCII字符的表示</p>
+<p>你还可指定要转换的值是哪种类型,更准确地说,是要将其视为哪种类型。例如,你可能提供一个整数,但将其作为小数进行处理。为此可在格式说明(即冒号后面)使用字符f(表示定点数) 。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;The number is {num}&quot;.format(num=42)
+'The number is 42'
+&gt;&gt;&gt; &quot;The number is {num:f}&quot;.format(num=42)
+'The number is 42.000000'
+</code></pre>
+
+<table border='1'>
+    <caption>字符串格式设置中的类型说明符</caption>
+    <tr>
+        <th width="20%" align="center">类型</th>
+        <th width="80%">含义</th>
+    </tr>
+    <tr>
+        <td align="center">b</td>
+        <td>将整数表示为二进制</td>
+    </tr>
+    <tr>
+        <td align="center">c</td>
+        <td>将整数解读为unicode</td>
+    </tr>
+    <tr>
+        <td align="center">d</td>
+        <td>将整数视为十进制数进行处理,这是整数默认使用的说明符</td>
+    </tr>
+    <tr>
+        <td align="center">e</td>
+        <td>用科学计数法表示小数</td>
+    </tr>
+    <tr>
+        <td align="center">e</td>
+        <td>用科学计数法表示小数</td>
+    </tr>
+    <tr>
+        <td align="center">E</td>
+        <td>与e相同,但使用E来表示指数</td>
+    </tr>
+    <tr>
+        <td align="center">f</td>
+        <td>表示小数</td>
+    </tr>
+    <tr>
+        <td align="center">F</td>
+        <td>与f相同,但对于特殊值(<b>nan</b>和<b>inf</b>),使用大写表示</td>
+    </tr>
+    <tr>
+        <td align="center">g</td>
+        <td>自动在定点表示法和科学表示法之间做出选择。这是默认用于小数的说明符，但在默认情况下至少有1位小数</td>
+    </tr>
+    <tr>
+        <td align="center">G</td>
+        <td>与g相同，但使用大写来表示指数和特殊值</td>
+    </tr>
+    <tr>
+        <td align="center">n</td>
+        <td>与g相同，但插入随区域而异的数字分隔符</td>
+    </tr>
+    <tr>
+        <td align="center">o</td>
+        <td>将整数表示为八进制数</td>
+    </tr>
+    <tr>
+        <td align="center">s</td>
+        <td>保持字符串的格式不变，这是默认用于字符串的说明符</td>
+    </tr>
+    <tr>
+        <td align="center">x</td>
+        <td>将整数表示为十六进制数并使用小写字母</td>
+    </tr>
+    <tr>
+        <td align="center">X</td>
+        <td>与x相同，但使用大写字母</td>
+    </tr>
+    <tr>
+        <td align="center">%</td>
+        <td>将数表示为百分比值（乘以100，按说明符f设置格式，再在后面加上%）</td>
+    </tr>
+</table>
+
+<h4 id="_7">宽度、精度和千位分隔符</h4>
+<p>设置浮点数(或其他更具体的小数类型)的格式时,默认在小数点后面显示6位小数,并根据需要设置字段的宽度,而不进行任何形式的填充。当然,这种默认设置可能不是你想要的,在这种情况下,可根据需要在格式说明中指定宽度和精度。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;{num:10}&quot;.format(num=3)
+'         3'
+&gt;&gt;&gt; &quot;{name:10}&quot;.format(name=&quot;Bob&quot;)
+'Bob       '
+</code></pre>
+
+<p>如你所见,数和字符串的对齐方式不同。</p>
+<p>精度也是使用整数指定的,但需要在它前面加上一个表示小数点的句点</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;Pi is {pi:.2f}&quot;.format(pi=pi)
+'Pi is 3.14'
+</code></pre>
+
+<p>这里显式地指定了类型f,因为默认的精度处理方式稍有不同(相关的规则请参阅“<a href="https://docs.python.org/zh-cn/3/library/string.html">Python库参考手册</a>” )。当然,可同时指定宽度和精度。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;{pi:10.2f}&quot;.format(pi=pi)
+'       3.14' 
+</code></pre>
+
+<p>最后,可使用逗号来指出你要添加千位分隔符。</p>
+<pre><code class="python">&gt;&gt;&gt; 'One googol is {:,}'.format(10**100)
+'One googol is 10,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000'
+</code></pre>
+
+<h4 id="0">符号、对齐和用 0 填充</h4>
+<p>有很多用于设置数字格式的机制,比如便于打印整齐的表格。在大多数情况下,只需指定宽度和精度,但包含负数后,原本漂亮的输出可能不再漂亮。另外,正如你已看到的,字符串和数的默认对齐方式不同。在一栏中同时包含字符串和数时,你可能想修改默认对齐方式。在指定宽度和精度的数前面,可添加一个标志。这个标志可以是零、加号、减号或空格,其中零表示使用0来填充数字</p>
+<pre><code class="python">&gt;&gt;&gt; '{:010.2f}'.format(pi)
+'0000003.14'
+</code></pre>
+
+<p>要指定左对齐、右对齐和居中,可分别使用&lt;、&gt;和^ 。</p>
+<pre><code class="python">&gt;&gt;&gt;  print('{0:&lt;10.2f}\n{0:^10.2f}\n{0:&gt;10.2f}'.format(pi))
+3.14
+   3.14
+     3.14
+</code></pre>
+
+<p>可以使用填充字符来扩充对齐说明符,这样将使用指定的字符而不是默认的空格来填充。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;{:$^15}&quot;.format(&quot; WIN BIG &quot;)
+'$$$ WIN BIG $$$'
+</code></pre>
+
+<p>如果要给正数加上符号,可使用说明符+(将其放在对齐说明符后面),而不是默认的-。如果将符号说明符指定为空格,会在正数前面加上空格而不是+。</p>
+<pre><code class="python">&gt;&gt;&gt; print('{0:-.2}\n{1:-.2}'.format(pi, -pi)) #默认设置
+3.1
+-3.1
+&gt;&gt;&gt; print('{0:+.2}\n{1:+.2}'.format(pi, -pi))
++3.1
+-3.1
+&gt;&gt;&gt; print('{0: .2}\n{1: .2}'.format(pi, -pi))
+ 3.1
+-3.1
+</code></pre>
+
+<p>需要介绍的最后一个要素是井号(#)选项,你可将其放在符号说明符和宽度之间(如果指定了这两种设置)。这个选项将触发另一种转换方式,转换细节随类型而异。例如,对于二进制、八进制和十六进制转换,将加上一个前缀。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;{:b}&quot;.format(42)
+'101010'
+&gt;&gt;&gt; &quot;{:#b}&quot;.format(42)
+'0b101010'
+</code></pre>
+
+<h4 id="_8">字符串方法</h4>
+<h5 id="center">center</h5>
+<p>方法center通过在两边添加填充字符(默认为空格)让字符串居中。</p>
+<pre><code class="python">&gt;&gt;&gt; &quot;The Middle by Jimmy Eat World&quot;.center(39)
+'    The Middle by Jimmy Eat World    '
+&gt;&gt;&gt; &quot;The Middle by Jimmy Eat World&quot;.center(39, &quot;*&quot;)
+'*****The Middle by Jimmy Eat World*****'
+</code></pre>
+
+<p>自学<code>ljust、rjust和zfill</code>。</p>
+<h5 id="find">find</h5>
+<p>方法find在字符串中查找子串。如果找到,就返回子串的第一个字符的索引,否则返回-1 。</p>
+<pre><code class="python">&gt;&gt;&gt;'With a moo-moo here, and a moo-moo there'.find('moo')
+7
+&gt;&gt;&gt;title = &quot;Monty Python's Flying Circus&quot;
+&gt;&gt;&gt;title.find('Monty')
+0
+</code></pre>
+
+<p>你还可指定搜索的起点和终点(它们都是可选的)。</p>
+<pre><code class="python">&gt;&gt;&gt;subject.find('$$$')
+0
+&gt;&gt;&gt;subject.find('$$$', 1) # 只指定了起点
+20
+&gt;&gt;&gt;subject.find('!!!')
+16
+&gt;&gt;&gt;subject.find('!!!', 0, 16) # 同时指定了起点和终点
+-1
+</code></pre>
+
+<p><strong>请注意,起点和终点值(第二个和第三个参数)指定的搜索范围包含起点,但不包含终点。</strong></p>
+<p>自学<code>rfind、index、rindex、count、startswith、endswith</code>。</p>
+<h5 id="join">join</h5>
+<p>合并序列的元素必须都是字符串。</p>
+<pre><code class="python">&gt;&gt;&gt; seq = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; sep = '+'
+&gt;&gt;&gt; sep.join(seq) # 合并一个字符串列表
+'1+2+3+4+5'
+</code></pre>
+
+<p>如果是<code>seq.join(sep)</code>则会报错</p>
+<p>自学<code>split</code></p>
+<h5 id="lower">lower</h5>
+<p>方法lower返回字符串的小写版本。</p>
+<pre><code class="python">&gt;&gt;&gt; 'Trondheim Hammer Dance'.lower()
+'trondheim hammer dance'
+</code></pre>
+
+<p>自学<code>:islower、istitle、isupper、translate、capitalize、casefold、swapcase、title、upper</code>。</p>
+<h5 id="strip">strip</h5>
+<p>方法strip将字符串开头和末尾的空白(但不包括中间的空白)删除,并返回删除后的结果。</p>
+<pre><code class="python">&gt;&gt;&gt; '    internal whitespace is kept    '.strip()
+'internal whitespace is kept'
+</code></pre>
+
+<p>还可在一个字符串参数中指定要删除哪些字符。</p>
+<pre><code class="python">&gt;&gt;&gt; '*** SPAM * for * everyone!!! ***'.strip(' *!')
+'SPAM * for * everyone'
+</code></pre>
+
+<p>自学<code>lstrip、rstrip</code></p>
+<h5 id="replace">replace</h5>
+<p>方法replace将指定子串都替换为另一个字符串,并返回替换后的结果。</p>
+<pre><code class="python">&gt;&gt;&gt; 'This is a test'.replace('is', 'eez')
+'Theez eez a test'
+</code></pre>
+
+<p>自学<code>expandtabs</code>。</p>
+<h5 id="translate">translate</h5>
+<p>方法translate与replace一样替换字符串的特定部分,但不同的是它只能进行单字符替换。这个方法的优势在于能够同时替换多个字符,因此效率比replace高。</p>
+<p>然而,使用translate前必须创建一个转换表。这个转换表指出了不同Unicode码点之间的转换关系。要创建转换表,可对字符串类型 str调用方法maketrans,这个方法接受两个参数:两个长度相同的字符串,它们指定要将第一个字符串中的每个字符都替换为第二个字符串中的相应字符</p>
+<pre><code class="python">&gt;&gt;&gt; table = str.maketrans('cs', 'kz')
+&gt;&gt;&gt; table
+{115: 122, 99: 107}
+&gt;&gt;&gt;  'this is an incredible test'.translate(table)
+'thiz iz an inkredible tezt'
+</code></pre>
+
+<p>调用方法maketrans时,还可提供可选的第三个参数,指定要将哪些字母删除</p>
+<pre><code class="python">&gt;&gt;&gt; table = str.maketrans('cs', 'kz', ' ')
+&gt;&gt;&gt; 'this is an incredible test'.translate(table)
+'thizizaninkredibletezt'
 </code></pre>
               
             </div>
