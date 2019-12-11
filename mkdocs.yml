@@ -9,6 +9,7 @@ nav:
             - 注释: python/基础教程/注释.md
             - 元组与列表: python/基础教程/元组与列表.md
             - 字符串: python/基础教程/字符串.md
+            - 字典: python/基础教程/字典.md
       - Java: 
         - 字符串: java/String.md
     - 关于: about.md
