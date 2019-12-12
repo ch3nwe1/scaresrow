@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/about/">
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>关于 - 稻草人日记</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/python/基础教程/条件控制与循环结构/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>条件控制和循环结构 - 稻草人日记</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="..">稻草人日记</a>
+                    <a class="navbar-brand" href="../../..">稻草人日记</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,9 +47,9 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="..">主页</a>
+                                <a href="../../..">主页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">程序 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -62,23 +62,23 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../python/基础教程/注释/">注释</a>
+    <a href="../注释/">注释</a>
 </li>
             
 <li >
-    <a href="../python/基础教程/元组与列表/">元组与列表</a>
+    <a href="../元组与列表/">元组与列表</a>
 </li>
             
 <li >
-    <a href="../python/基础教程/字符串/">字符串</a>
+    <a href="../字符串/">字符串</a>
 </li>
             
 <li >
-    <a href="../python/基础教程/字典/">字典</a>
+    <a href="../字典/">字典</a>
 </li>
             
-<li >
-    <a href="../python/基础教程/条件控制与循环结构/">条件控制和循环结构</a>
+<li class="active">
+    <a href="./">条件控制和循环结构</a>
 </li>
     </ul>
   </li>
@@ -90,14 +90,14 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../java/String/">字符串</a>
+    <a href="../../../java/String/">字符串</a>
 </li>
     </ul>
   </li>
                                 </ul>
                             </li>
-                            <li class="active">
-                                <a href="./">关于</a>
+                            <li >
+                                <a href="../../../about/">关于</a>
                             </li>
                         </ul>
 
@@ -108,12 +108,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../java/String/">
+                                <a rel="next" href="../字典/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
-                            <li class="disabled">
-                                <a rel="prev" >
+                            <li >
+                                <a rel="prev" href="../../../java/String/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -125,11 +125,205 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#_1">条件和条件语句</a></li>
+            <li><a href="#if">if...</a></li>
+            <li><a href="#ifelse">if...else...</a></li>
+            <li><a href="#elif">elif语句</a></li>
+            <li><a href="#_2">比较运算符</a></li>
+            <li><a href="#andor-not">and、or 和 not</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<p>我是深爱野孩子的稻草人</p></div>
+<h3 id="_1">条件和条件语句</h3>
+<h4 id="if">if...</h4>
+<pre><code>if 表达式:
+    语句块
+</code></pre>
+
+<p>其实表达式只是一个单纯的布尔值或变量，也可以是比较表达式或逻辑表达式（a &gt; b and a != c），如果表达式为真，则执行语句块，如果表达式为假则跳过语句块, 语句块使用制表符，即Tab或者四个空格的缩进</p>
+<p>用作布尔表达式时，下面的值将被解释器视为假。</p>
+<ul>
+<li>False</li>
+<li>None</li>
+<li>0</li>
+<li>""</li>
+<li>()</li>
+<li>[]</li>
+<li>{}</li>
+</ul>
+<p>另外，布尔值真（True）代表1, 假（False）代表0 </p>
+<pre><code class="python">&gt;&gt;&gt; True + 1
+2
+&gt;&gt;&gt; False + 1
+1
+</code></pre>
+
+<pre><code class="python"># coding=utf-8
+if not False:
+    print(&quot;expression is False &quot;)
+if not 0:
+    print(&quot;expression is 0&quot;)
+if not None:
+    print(&quot;expression is None&quot;)
+if not ():
+    print(&quot;expression is ()&quot;)
+if not []:
+    print('expression is []')
+if not {}:
+    print('expression is {}')
+# out
+expression is False 
+expression is 0
+expression is None
+expression is ()
+expression is []
+expression is {}
+</code></pre>
+
+<p>使用if语句时如果只有一条语句块，可以世界写在冒号后面</p>
+<pre><code class="python">if 2 &gt; 1: print('2 &gt; 1')
+# out
+2 &gt; 1
+</code></pre>
+
+<p>布尔值True和False属于类型bool,而bool与list、 str和tuple一样,可用来转换其他的值</p>
+<pre><code class="python">&gt;&gt;&gt; bool(&quot;I think, i am falling, you can see, Why do you pretend you don't know?&quot;)
+True
+&gt;&gt;&gt; bool(0)
+False
+</code></pre>
+
+<h4 id="ifelse">if...else...</h4>
+<p>else必伴随着if,当if 后面的条件表达式为假时执行else后面的语句块，其语法结构如下</p>
+<pre><code>if 表达式：
+    语句块1
+else: 
+    语句块2
+</code></pre>
+
+<pre><code class="python">a = -9
+if a &gt; 0: 
+    b = a
+else:
+    b = -a
+print(b)
+# out
+9
+</code></pre>
+
+<p>同样，代码块只有一行我们也可以简写</p>
+<p><code>b = a if a &gt; 0 else -a</code></p>
+<p>在python中也称其为三目运算符, if 后面的表达式成立，将a值赋给b，否则b = -a,这是一个求绝对值的简单写法。</p>
+<h4 id="elif">elif语句</h4>
+<p>其语法结构如下</p>
+<pre><code class="python">if 表达式1:
+    语句块1
+elif 表达式2:
+    语句块2
+elif 表达式3:
+    语句块3
+...
+else:
+    语句块n
+</code></pre>
+
+<pre><code class="python">a = 0
+if a &gt; 0:
+    print('a &gt; 0')
+elif a = 0:
+    print('a = 0')
+else:
+    print('a &lt; 0')
+# out 
+a = 0
+</code></pre>
+
+<h4 id="_2">比较运算符</h4>
+<p>在条件表达式中,最基本的运算符可能是比较运算符,它们用于执行比较</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x == y</td>
+<td>x 等于 y</td>
+</tr>
+<tr>
+<td>x &lt;  y</td>
+<td>x 小于 y</td>
+</tr>
+<tr>
+<td>x &gt; y</td>
+<td>x 大于 y</td>
+</tr>
+<tr>
+<td>x &gt;= y</td>
+<td>x 大于或等于 y</td>
+</tr>
+<tr>
+<td>x &lt;= y</td>
+<td>x小于或等于 y</td>
+</tr>
+<tr>
+<td>x != y</td>
+<td>x 不等于 y</td>
+</tr>
+<tr>
+<td>x is y</td>
+<td>x和y是同一个对象</td>
+</tr>
+<tr>
+<td>x is not y</td>
+<td>x和y是不同的对象</td>
+</tr>
+<tr>
+<td>x in y</td>
+<td>x是容器y的成员</td>
+</tr>
+<tr>
+<td>x not in y</td>
+<td>x 不是y的成员</td>
+</tr>
+</tbody>
+</table>
+<p>注意：相同运算符（is）与相等运算符（==）是不一样的</p>
+<pre><code class="python">x = y = [1,2]
+z = [1,2]
+print(x == y) # True
+print(x is y) # True
+print(x == z) # True
+print(x is z) # False
+</code></pre>
+
+<p>python支持链式比较,可同时使用多个比较运算符，例如 0 &lt; age &lt; 100</p>
+<pre><code class="python">age = 20
+if 20 is age &gt; 0:
+    print('age:', age)
+# out 
+age: 20
+</code></pre>
+
+<pre><code class="python">age1 = 20
+age2 = 40
+if 0 &lt; age1 &lt; age2 &lt; 100:
+    print('age1:', age1, ',age2:', age2)
+# out 
+age1: 20 ,age2: 40
+</code></pre>
+
+<h4 id="andor-not">and、or 和 not</h4>
+<p>and、or和not 是python中的逻辑运算符，and 代表与，or代表逻辑或，not 代表逻辑非，and 和 or中间可以添加多个表达式，not 后面只能有一个表达式（not False 即为 True, not True 即为 False），语法结构如下</p>
+<pre><code>表达式1 and 表达式2 and 表达式3 ...
+表达式1 or 表达式2 or 表达式3 ...
+</code></pre>
+
+<p>链接and的表达式必须都是真，结果为真，否则为假</p>
+<p>链接or的表达式有一个为真，结果为真，否则为假</p></div>
         </div>
 
         <footer class="col-md-12">
@@ -137,11 +331,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
