@@ -10,6 +10,7 @@ nav:
             - 元组与列表: python/基础教程/元组与列表.md
             - 字符串: python/基础教程/字符串.md
             - 字典: python/基础教程/字典.md
+            - 条件控制和循环结构: python/基础教程/条件控制与循环结构.md 
       - Java: 
         - 字符串: java/String.md
     - 关于: about.md
