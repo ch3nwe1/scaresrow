@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/python/基础教程/注释/">
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/python/基础教程/函数/">
       
       
       
@@ -38,7 +38,7 @@
     
     
       
-        <title>注释 - 稻草人日记</title>
+        <title>函数 - 稻草人日记</title>
       
     
     
@@ -77,7 +77,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#python" tabindex="1" class="md-skip">
+      <a href="#_1" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -103,7 +103,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                注释
+                函数
               
             </span>
           
@@ -245,59 +245,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        注释
-      </label>
-    
-    <a href="./" title="注释" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../注释/" title="注释" class="md-nav__link">
       注释
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    Python代码注释
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    单引号（'''）
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    双引号（"""）
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -353,11 +305,66 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../函数/" title="函数" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        函数
+      </label>
+    
+    <a href="./" title="函数" class="md-nav__link md-nav__link--active">
       函数
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    定义函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参数传递
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    变量的作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    匿名函数
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -443,22 +450,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#python" class="md-nav__link">
-    Python代码注释
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    单引号（'''）
+    定义函数
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    双引号（"""）
+    参数传递
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    变量的作用域
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    匿名函数
   </a>
   
 </li>
@@ -480,33 +494,195 @@
               
                 
                 
-                  <h1>注释</h1>
+                  <h1>函数</h1>
                 
-                <h4 id="python">Python代码注释</h4>
-<p>在Python中，井号（<strong>#</strong>）比较特殊：在代码中，井号后面到行尾的所有内容都将被忽略</p>
-<pre><code class="python"># 打印Hello World！
-print('Hello World！')
+                <h3 id="_1">定义函数</h3>
+<p>定义函数的语法结构如下</p>
+<p><code>python
+def functionname([parameterlist]):
+    ["""comments"""]
+    [functionbody]</code></p>
+<p>参数说明：</p>
+<ul>
+<li>functionname: 函数名称，在调用函数时使用</li>
+<li>parameterlist: 可选参数，可以添加零至多个参数，在调用时传递，如果没有参数时，函数后也要加上括号(),定义多个参数时，在调用时必须传递，而且按照相应的顺序</li>
+<li>comments 为函数的文档注释，使用三个引号''' 或者""",编写文档注释是程序员的良好道德品质，注释说明函数的功能</li>
+<li>functionbody：函数体，执行该函数的具体功能，如果该函数有返回值，可以使用<strong>return</strong> 返回</li>
+</ul>
+<p>注意，functionbody与comments保持与def相同的缩进</p>
+<p>调用函数时通过函数名</p>
+<pre><code class="python">functionname([parameterlist])
 </code></pre>
 
-<h4 id="_1">单引号（'''）</h4>
-<pre><code class="python">'''
-这是多行注释，用三个单引号
-这是多行注释，用三个单引号 
-这是多行注释，用三个单引号
-'''
+<h3 id="_2">参数传递</h3>
+<p>在使用函数时，经常会用到形式参数和实际参数</p>
+<ul>
+<li>形式参数：在定义函数时，函数名后面括号里的参数称为形式参数，也叫形参</li>
+<li>实际参数：在调用函数，函数后面括号里的参数为实际参数，也叫实参</li>
+</ul>
+<pre><code class="python">def func(obj): # obj为形参
+    pass
+func('myfunc') # 'myfunc'为实参
 </code></pre>
 
-<h4 id="_2">双引号（"""）</h4>
-<pre><code class="python">&quot;&quot;&quot;
-这是多行注释，用三个双引号
-这是多行注释，用三个双引号 
-这是多行注释，用三个双引号
-&quot;&quot;&quot;
+<p>在传递参数时，如果参数是不可变对象，在调用函数时只能改变形参的值，而实参的值不会改变，如果传入的参数是可变的对象，则形参和实参都会改变</p>
+<pre><code class="python">def func(obj):
+    print('原值：', obj)
+    obj += obj
+    print(&quot;新值：&quot;, obj)
+
+
+s = &quot;朝朝暮暮让你猜想如何驯服我&quot;
+func(s)
+print('调用函数后：', s)
+
+lst = ['1', '2']
+func(lst)
+print('调用函数后：', lst)
+
+# out
+原值： 朝朝暮暮让你猜想如何驯服我
+新值： 朝朝暮暮让你猜想如何驯服我朝朝暮暮让你猜想如何驯服我
+调用函数后： 朝朝暮暮让你猜想如何驯服我
+原值： ['1', '2']
+新值： ['1', '2', '1', '2']
+调用函数后： ['1', '2', '1', '2']
 </code></pre>
 
-<p>切记一点，要在文件开头加上文件编码，否则有中文字符就会出错
-<code># -*- coding:utf-8 -*-</code><br />
-<code># coding=utf-8</code></p>
+<p>前面提到的在调用函数时，参数的数量和位置必须和定义时是一样的，如果数量不一样会报错，如果顺序错误，虽然不会报错，但是容易产生bug,但是如果使用关键字参数时，可以忽略参数的传递顺序.</p>
+<pre><code class="python">def func(obj):
+    print('原值：', obj)
+    obj += obj
+    print(&quot;新值：&quot;, obj)
+
+fun_bmi(weight=65, person='阿飞', height=185)
+# out
+person: 阿飞
+height: 185
+weight: 65
+</code></pre>
+
+<p>另外可以为形参设置默认值，在调用也可以不传</p>
+<pre><code class="python">def functionname(...,[parameter1=defaultvalue1])
+    [functionbody]
+</code></pre>
+
+<pre><code class="python">def func_foo(name='阿飞'):
+    print('name:', name)
+func_foo()
+func_foo('雷锋')
+# out
+name: 阿飞
+name: 雷锋
+</code></pre>
+
+<p>在python中，还可以定义可变参数，也称为不定长参数，即传入的参数可以是0个，一个，两个或者任意个，定义可变参数有两种形式，一种是<em>parameter,另一种是</em>*parameter</p>
+<p>*parameter这种形式表示接收任意多个实际参数并放到元组中</p>
+<pre><code class="python">def print_name(*name):
+    print('name类型为：', type(name))
+    for item in name:
+        print(name)
+print_name('张三', '李四', '王五')
+# out
+name类型为： &lt;class 'tuple'&gt;
+张三
+李四
+王五
+</code></pre>
+
+<p>如果想使用一个已经存在的列表作为参数，可以在列表前加”*“</p>
+<pre><code class="python">namelist = ['张三', '李四', '王五']
+print_name(*namelist)
+# out
+name类型为： &lt;class 'tuple'&gt;
+张三
+李四
+王五
+</code></pre>
+
+<p>**parameter这种形式表示接收任意多个显示赋值的实际参数，并放在一个字典中。</p>
+<pre><code class="python">def print_sign(**sign):
+    print('参数类型为：', type(sign))
+    for key, value in sign.items():
+        print(&quot;参数{0}的值为{1}&quot;.format(key, value))
+
+
+print_sign(name='阿飞', age=27, describe='阿飞是个混蛋')
+# out
+参数类型为： &lt;class 'dict'&gt;
+参数name的值为阿飞
+参数age的值为27
+参数describe的值为阿飞是个混蛋
+</code></pre>
+
+<p>如果想使用已经存在的字典作为参数，可在字典前加上”**“</p>
+<pre><code class="python">dict_sign = {name:'阿飞', age:27, describe:'阿飞是个混蛋'}
+print_sign(**dict_sign)
+# out
+数类型为： &lt;class 'dict'&gt;
+参数name的值为阿飞
+参数age的值为27
+参数describe的值为阿飞是个混蛋
+</code></pre>
+
+<h3 id="_3">变量的作用域</h3>
+<p>变量的作用域是指程序代码能够访问的该变量的区域，如果超出该区域，再访问就会出错，根据变量的有效范围可以分为局部变量和全局变量</p>
+<p>局部变量是指在函数内部定义的变量，它只在函数内部有效。即函数内部的名字在在函数运行时才会创建，函数运行完毕，该变量就不存在了</p>
+<pre><code class="python">def f_demo():
+    message = &quot;阿飞是个混蛋&quot;
+    print(&quot;局部变量message:&quot;, message)
+
+print('变量messgae:', messge)
+# out
+局部变量message: 阿飞是个混蛋
+NameError: name 'messge' is not defined
+</code></pre>
+
+<p>与局部变量对应，全局变量能够作用于函数内外的变量，如果在函数外部定义，那么不仅在函数外可以访问，在函数内部也可以访问</p>
+<pre><code class="python">message = '阿飞是个混蛋'
+def f_demo():
+    print('函数内部：',meaage)
+f_demo()
+print('函数外部：',message)
+# out
+函数内部：阿飞是个混蛋
+函数外部：阿飞是个混蛋
+</code></pre>
+
+<p>在函数体内定义，并且使用<strong>global</strong>关键字修饰后，该变量也可以称为全局变量，并在函数体外可以访问，并且修改</p>
+<pre><code class="python">message = '阿飞是个混蛋'
+print('修改前：', message)
+
+
+def f_demo():
+    global message
+    message = '函数内部修改后：阿飞是个混蛋'
+
+
+f_demo()
+
+print('修改后：:', message)
+
+# out
+修改前： 阿飞是个混蛋
+修改后：: 函数内部修改后：阿飞是个混蛋
+</code></pre>
+
+<h3 id="_4">匿名函数</h3>
+<p>匿名函数是值没有名字的函数，它主要应用在需要一个函数，但又不想去命名这个函数，通常情况只是用一次，在python中使用lambda表达式创建匿名函数，其语法格式如下：</p>
+<pre><code class="python">result = lambda [arg1 [arg2,......,argn]]:expression
+</code></pre>
+
+<p>result用于调用lambda表达式</p>
+<p>[arg1 [arg2,....,argn]]可选参数，指需要传递的参数列表，多个参数用”，“隔开</p>
+<p>expression 必须参数，指用于匿名函数需要执行的功能</p>
+<pre><code class="python">import math
+r = 10
+result = lambda r:math.pi*r*r
+print('半径为10的圆面积为：', result(r))
+# out
+314.1592654
+</code></pre>
                 
                   
                 
@@ -528,7 +704,7 @@ print('Hello World！')
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../.." title="主页" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../条件控制与循环结构/" title="条件控制和循环结构" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -537,19 +713,19 @@ print('Hello World！')
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                主页
+                条件控制和循环结构
               </span>
             </div>
           </a>
         
         
-          <a href="../元组与列表/" title="元组与列表" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../../java/String/" title="字符串" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                元组与列表
+                字符串
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
