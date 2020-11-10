@@ -1,0 +1,954 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/JVMS/ClassFormat/">
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Class Format - 稻草人日记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#class-format" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://ch3nwe1.github.io/scaresrow" title="稻草人日记" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              稻草人日记
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Class Format
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://ch3nwe1.github.io/scaresrow" title="稻草人日记" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    稻草人日记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="主页" class="md-nav__link">
+      主页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      程序
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1-1" type="checkbox" id="nav-2-1-1">
+    
+    <label class="md-nav__link" for="nav-2-1-1">
+      基础教程
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-2-1-1">
+        基础教程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/注释/" title="注释" class="md-nav__link">
+      注释
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/元组与列表/" title="元组与列表" class="md-nav__link">
+      元组与列表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/字符串/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/字典/" title="字典" class="md-nav__link">
+      字典
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/条件控制与循环结构/" title="条件控制和循环结构" class="md-nav__link">
+      条件控制和循环结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../python/基础教程/函数/" title="函数" class="md-nav__link">
+      函数
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Java
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../String/" title="字符串" class="md-nav__link">
+      字符串
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../JUC/ReentrantLock/" title="ReentrantLock" class="md-nav__link">
+      ReentrantLock
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
+      关于
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    源文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    字节码文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    反编译文件
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    字节码文件结构
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#magic" class="md-nav__link">
+    magic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minor_version" class="md-nav__link">
+    minor_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#major_version" class="md-nav__link">
+    major_version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constant_pool_count" class="md-nav__link">
+    constant_pool_count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp_infoconstant_pool_info" class="md-nav__link">
+    cp_info(constant_pool_info)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="class-format">Class Format</h1>
+<p>本文为字节码文件规范,以一个实例来研究java编译的class文件中每一个字节码进行分析其具体内容是什么!!!参考Oracle官网的Java虚拟机规范</p>
+<h2 id="_1">源文件</h2>
+<pre><code class="java">public class Student implements Serializable, Cloneable {
+
+    private long id;
+    private String name;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Student() {
+    }
+
+    public Student(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+}
+</code></pre>
+
+<h2 id="_2">字节码文件</h2>
+<pre><code>CA FE BA BE 00 00 00 34 00 21 09 00 04 00 1C 09 
+00 04 00 1D 0A 00 05 00 1E 07 00 1F 07 00 20 01 
+00 02 69 64 01 00 01 4A 01 00 04 6E 61 6D 65 01 
+00 12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 53 74 72 
+69 6E 67 3B 01 00 05 67 65 74 49 64 01 00 03 28 
+29 4A 01 00 04 43 6F 64 65 01 00 0F 4C 69 6E 65 
+4E 75 6D 62 65 72 54 61 62 6C 65 01 00 12 4C 6F 
+63 61 6C 56 61 72 69 61 62 6C 65 54 61 62 6C 65 
+01 00 04 74 68 69 73 01 00 16 4C 63 6F 6D 2F 61 
+73 6D 2F 74 65 73 74 2F 53 74 75 64 65 6E 74 3B 
+01 00 05 73 65 74 49 64 01 00 04 28 4A 29 56 01 
+00 07 67 65 74 4E 61 6D 65 01 00 14 28 29 4C 6A 
+61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 
+01 00 07 73 65 74 4E 61 6D 65 01 00 15 28 4C 6A 
+61 76 61 2F 6C 61 6E 67 2F 53 74 72 69 6E 67 3B 
+29 56 01 00 06 3C 69 6E 69 74 3E 01 00 03 28 29 
+56 01 00 16 28 4A 4C 6A 61 76 61 2F 6C 61 6E 67 
+2F 53 74 72 69 6E 67 3B 29 56 01 00 0A 53 6F 75 
+72 63 65 46 69 6C 65 01 00 0C 53 74 75 64 65 6E 
+74 2E 6A 61 76 61 0C 00 06 00 07 0C 00 08 00 09 
+0C 00 17 00 18 01 00 14 63 6F 6D 2F 61 73 6D 2F 
+74 65 73 74 2F 53 74 75 64 65 6E 74 01 00 10 6A 
+61 76 61 2F 6C 61 6E 67 2F 4F 62 6A 65 63 74 00 
+21 00 04 00 05 00 00 00 02 00 02 00 06 00 07 00 
+00 00 02 00 08 00 09 00 00 00 06 00 01 00 0A 00 
+0B 00 01 00 0C 00 00 00 2F 00 02 00 01 00 00 00 
+05 2A B4 00 01 AD 00 00 00 02 00 0D 00 00 00 06 
+00 01 00 00 00 09 00 0E 00 00 00 0C 00 01 00 00 
+00 05 00 0F 00 10 00 00 00 01 00 11 00 12 00 01 
+00 0C 00 00 00 3E 00 03 00 03 00 00 00 06 2A 1F 
+B5 00 01 B1 00 00 00 02 00 0D 00 00 00 0A 00 02 
+00 00 00 0D 00 05 00 0E 00 0E 00 00 00 16 00 02 
+00 00 00 06 00 0F 00 10 00 00 00 00 00 06 00 06 
+00 07 00 01 00 01 00 13 00 14 00 01 00 0C 00 00 
+00 2F 00 01 00 01 00 00 00 05 2A B4 00 02 B0 00 
+00 00 02 00 0D 00 00 00 06 00 01 00 00 00 11 00 
+0E 00 00 00 0C 00 01 00 00 00 05 00 0F 00 10 00 
+00 00 01 00 15 00 16 00 01 00 0C 00 00 00 3E 00 
+02 00 02 00 00 00 06 2A 2B B5 00 02 B1 00 00 00 
+02 00 0D 00 00 00 0A 00 02 00 00 00 15 00 05 00 
+16 00 0E 00 00 00 16 00 02 00 00 00 06 00 0F 00 
+10 00 00 00 00 00 06 00 08 00 09 00 01 00 01 00 
+17 00 18 00 01 00 0C 00 00 00 33 00 01 00 01 00 
+00 00 05 2A B7 00 03 B1 00 00 00 02 00 0D 00 00 
+00 0A 00 02 00 00 00 18 00 04 00 19 00 0E 00 00 
+00 0C 00 01 00 00 00 05 00 0F 00 10 00 00 00 01 
+00 17 00 19 00 01 00 0C 00 00 00 59 00 03 00 04 
+00 00 00 0F 2A B7 00 03 2A 1F B5 00 01 2A 2D B5 
+00 02 B1 00 00 00 02 00 0D 00 00 00 12 00 04 00 
+00 00 1B 00 04 00 1C 00 09 00 1D 00 0E 00 1E 00 
+0E 00 00 00 20 00 03 00 00 00 0F 00 0F 00 10 00 
+00 00 00 00 0F 00 06 00 07 00 01 00 00 00 0F 00 
+08 00 09 00 03 00 01 00 1A 00 00 00 02 00 1B
+</code></pre>
+
+<h2 id="_3">反编译文件</h2>
+<pre><code class="java">Classfile /home/amarsoft/workspace/app/asm-test/target/classes/com/asm/test/Student.class
+  Last modified 2020-8-26; size 847 bytes
+  MD5 checksum 7fd5f26737b6e1effb65d05864328b9c
+  Compiled from &quot;Student.java&quot;
+public class com.asm.test.Student
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Fieldref           #4.#28         // com/asm/test/Student.id:J
+   #2 = Fieldref           #4.#29         // com/asm/test/Student.name:Ljava/lang/String;
+   #3 = Methodref          #5.#30         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+   #4 = Class              #31            // com/asm/test/Student
+   #5 = Class              #32            // java/lang/Object
+   #6 = Utf8               id
+   #7 = Utf8               J
+   #8 = Utf8               name
+   #9 = Utf8               Ljava/lang/String;
+  #10 = Utf8               getId
+  #11 = Utf8               ()J
+  #12 = Utf8               Code
+  #13 = Utf8               LineNumberTable
+  #14 = Utf8               LocalVariableTable
+  #15 = Utf8               this
+  #16 = Utf8               Lcom/asm/test/Student;
+  #17 = Utf8               setId
+  #18 = Utf8               (J)V
+  #19 = Utf8               getName
+  #20 = Utf8               ()Ljava/lang/String;
+  #21 = Utf8               setName
+  #22 = Utf8               (Ljava/lang/String;)V
+  #23 = Utf8               &lt;init&gt;
+  #24 = Utf8               ()V
+  #25 = Utf8               (JLjava/lang/String;)V
+  #26 = Utf8               SourceFile
+  #27 = Utf8               Student.java
+  #28 = NameAndType        #6:#7          // id:J
+  #29 = NameAndType        #8:#9          // name:Ljava/lang/String;
+  #30 = NameAndType        #23:#24        // &quot;&lt;init&gt;&quot;:()V
+  #31 = Utf8               com/asm/test/Student
+  #32 = Utf8               java/lang/Object
+{
+  public long getId();
+    descriptor: ()J
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #1                  // Field id:J
+         4: lreturn
+      LineNumberTable:
+        line 9: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/asm/test/Student;
+
+  public void setId(long);
+    descriptor: (J)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=2
+         0: aload_0
+         1: lload_1
+         2: putfield      #1                  // Field id:J
+         5: return
+      LineNumberTable:
+        line 13: 0
+        line 14: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/asm/test/Student;
+            0       6     1    id   J
+
+  public java.lang.String getName();
+    descriptor: ()Ljava/lang/String;
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #2                  // Field name:Ljava/lang/String;
+         4: areturn
+      LineNumberTable:
+        line 17: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/asm/test/Student;
+
+  public void setName(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: putfield      #2                  // Field name:Ljava/lang/String;
+         5: return
+      LineNumberTable:
+        line 21: 0
+        line 22: 5
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       6     0  this   Lcom/asm/test/Student;
+            0       6     1  name   Ljava/lang/String;
+
+  public com.asm.test.Student();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+         4: return
+      LineNumberTable:
+        line 24: 0
+        line 25: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/asm/test/Student;
+
+  public com.asm.test.Student(long, java.lang.String);
+    descriptor: (JLjava/lang/String;)V
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=4, args_size=3
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+         4: aload_0
+         5: lload_1
+         6: putfield      #1                  // Field id:J
+         9: aload_0
+        10: aload_3
+        11: putfield      #2                  // Field name:Ljava/lang/String;
+        14: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 4
+        line 29: 9
+        line 30: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Lcom/asm/test/Student;
+            0      15     1    id   J
+            0      15     3  name   Ljava/lang/String;
+}
+SourceFile: &quot;Student.java&quot;
+</code></pre>
+
+<h2 id="_4">字节码文件结构</h2>
+<pre><code>ClassFile {
+    u4 magic;
+    u2 minor_version;
+    u2 major_version;
+    u2 constant_pool_count;
+    cp_info constant_pool[constant_pool_count-1];
+    u2 access_flags;
+    u2 this_class;
+    u2 super_class;
+    u2 interfaces_count;
+    u2 interfaces[interfaces_count];
+    u2 fields_count;
+    field_info fields[fields_count];
+    u2 methods_count;
+    method_info methods[methods_count];
+    u2 attributes_count;
+    attribute_info attributes[attributes_count];
+}
+</code></pre>
+
+<p>其中u1,u2,u4分别代表1,2,4个字节</p>
+<h3 id="magic">magic</h3>
+<p>magic是字节码文件的魔法数,共有四个字节,<code>CA FE BA BE</code>,这是Java字节码文件的固定值</p>
+<h3 id="minor_version">minor_version</h3>
+<p>占用两个字节, 值为<code>00 00</code>,代表主版本号,目前的java版本直到jdk11都是0</p>
+<h3 id="major_version">major_version</h3>
+<p>次版本号<code>00 34</code>,转化为十进制为52,代表jdk1.8版本</p>
+<h3 id="constant_pool_count">constant_pool_count</h3>
+<p>常量池数量,占用两个字节,值为<code>00 21</code>,转化为十进制为33,代表常量池的数量是32 + 1</p>
+<h3 id="cp_infoconstant_pool_info">cp_info(constant_pool_info)</h3>
+<p>常量池信息字节是不固定的,但也有其规律可循,总体结构为</p>
+<pre><code>cp_info {
+    u1 tag;
+    u1 info[];
+}
+</code></pre>
+
+<p>1个字节的tag, info数组随着tag的不同其信息也不同,下面会一一介绍,首先来接收tag的类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">Constant Type</th>
+<th align="center">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">CONSTANT_Class</td>
+<td align="center">7</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Fieldref</td>
+<td align="center">9</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Methodref</td>
+<td align="center">10</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_InterfaceMethodref</td>
+<td align="center">11</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_String</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Integer</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Float</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Long</td>
+<td align="center">5</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Double</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_NameAndType</td>
+<td align="center">12</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_Utf8</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_MethodHandle</td>
+<td align="center">15</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_MethodType</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">CONSTANT_InvokeDynamic</td>
+<td align="center">18</td>
+</tr>
+</tbody>
+</table>
+<p>下面介绍每一个tag对应的info数组</p>
+<pre><code>CONSTANT_Class_info {
+    u1 tag;
+    u2 name_index; # 指向常量池表中的索引
+}
+</code></pre>
+
+<pre><code>CONSTANT_Fieldref_info {
+ u1 tag;
+ u2 class_index; //所属类的索引
+ u2 name_and_type_index; 名字和类型的索引
+}
+CONSTANT_Methodref_info {
+ u1 tag;
+ u2 class_index;
+ u2 name_and_type_index;
+}
+CONSTANT_InterfaceMethodref_info {
+ u1 tag;
+ u2 class_index;
+ u2 name_and_type_index;
+}
+</code></pre>
+
+<pre><code>CONSTANT_String_info {
+ u1 tag;
+ u2 string_index; //字符串索引
+}
+</code></pre>
+
+<pre><code>CONSTANT_Integer_info {
+ u1 tag;
+ u4 bytes;
+}
+CONSTANT_Float_info {
+ u1 tag;
+ u4 bytes; //占用四个字节的byte数组, 代表其真实值
+}
+</code></pre>
+
+<pre><code>CONSTANT_NameAndType_info {
+ u1 tag;
+ u2 name_index; // 名称索引
+ u2 descriptor_index; // 描述符索引
+}
+</code></pre>
+
+<pre><code>CONSTANT_Utf8_info {
+ u1 tag;
+ u2 length;
+ u1 bytes[length];
+}
+</code></pre>
+
+<pre><code>CONSTANT_MethodHandle_info {
+ u1 tag;
+ u1 reference_kind;
+ u2 reference_index;
+}
+</code></pre>
+
+<pre><code>CONSTANT_MethodType_info {
+ u1 tag;
+ u2 descriptor_index;
+}
+</code></pre>
+
+<pre><code>CONSTANT_InvokeDynamic_info {
+ u1 tag;
+ u2 bootstrap_method_attr_index;
+ u2 name_and_type_index;
+}
+</code></pre>
+
+<p>紧随常量池数量后面的字节是<strong><code>09</code></strong>, 代表是一个<code>CONSTANT_Fieldref</code>,其格式包含1个字节的tag, 2个字节的<code>class_index</code>(<strong><code>00 04</code></strong>)和2个字节的<code>name_and_type_index</code>(<strong><code>00 1C</code></strong>),所以常量池表的第一个常量分析完毕,正好与反编译文件对应</p>
+<blockquote>
+<h1 id="1-fieldref-428-1-428">1 = Fieldref           #4.#28 // #1 代表第一个索引,#4,#28现在还不清楚,先不要着急,慢慢的分析</h1>
+</blockquote>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>
