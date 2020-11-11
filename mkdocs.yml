@@ -14,6 +14,8 @@ nav:
             - 函数:  python/基础教程/函数.md
       - Java: 
         - 字符串: java/String.md
+      - Redis:
+        - redis-replication Redis/redis-replication.md    
     - 关于: about.md
 
 
