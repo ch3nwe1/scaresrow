@@ -11,7 +11,7 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/about/">
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/Spring/AliasFor/">
       
       
       
@@ -33,21 +33,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
-        <title>关于 - 稻草人日记</title>
+        <title>AliasFor - 稻草人日记</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
       
       
     
     
-      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
@@ -56,7 +56,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
     
     
     
@@ -99,7 +99,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                关于
+                AliasFor
               
             </span>
           
@@ -168,7 +168,7 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="主页" class="md-nav__link">
+    <a href="../../.." title="主页" class="md-nav__link">
       主页
     </a>
   </li>
@@ -237,7 +237,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/注释/" title="注释" class="md-nav__link">
+    <a href="../../../python/基础教程/注释/" title="注释" class="md-nav__link">
       注释
     </a>
   </li>
@@ -249,7 +249,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/元组与列表/" title="元组与列表" class="md-nav__link">
+    <a href="../../../python/基础教程/元组与列表/" title="元组与列表" class="md-nav__link">
       元组与列表
     </a>
   </li>
@@ -261,7 +261,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/字符串/" title="字符串" class="md-nav__link">
+    <a href="../../../python/基础教程/字符串/" title="字符串" class="md-nav__link">
       字符串
     </a>
   </li>
@@ -273,7 +273,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/字典/" title="字典" class="md-nav__link">
+    <a href="../../../python/基础教程/字典/" title="字典" class="md-nav__link">
       字典
     </a>
   </li>
@@ -285,7 +285,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/条件控制与循环结构/" title="条件控制和循环结构" class="md-nav__link">
+    <a href="../../../python/基础教程/条件控制与循环结构/" title="条件控制和循环结构" class="md-nav__link">
       条件控制和循环结构
     </a>
   </li>
@@ -297,7 +297,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/基础教程/函数/" title="函数" class="md-nav__link">
+    <a href="../../../python/基础教程/函数/" title="函数" class="md-nav__link">
       函数
     </a>
   </li>
@@ -338,7 +338,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../java/String/" title="字符串" class="md-nav__link">
+    <a href="../../String/" title="字符串" class="md-nav__link">
       字符串
     </a>
   </li>
@@ -350,7 +350,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../java/JUC/ReentrantLock/" title="ReentrantLock" class="md-nav__link">
+    <a href="../../JUC/ReentrantLock/" title="ReentrantLock" class="md-nav__link">
       ReentrantLock
     </a>
   </li>
@@ -386,7 +386,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../redis-replication Redis/redis-replication.md" title="None" class="md-nav__link">
+    <a href="../../../redis-replication Redis/redis-replication.md" title="None" class="md-nav__link">
       None
     </a>
   </li>
@@ -406,18 +406,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="关于" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../../about/" title="关于" class="md-nav__link">
       关于
     </a>
-    
   </li>
 
     
@@ -434,9 +427,30 @@
               
                 
                 
-                  <h1>关于</h1>
+                  <h1>AliasFor</h1>
                 
-                <p>我是深爱野孩子的稻草人</p>
+                <p>属性别名AliasFor</p>
+<pre><code class="java">@Nullable
+/**
+ * 传入注解方法,该方法如果有AliasFor注解,则返回AliasDescriptor对象
+ */
+public static AliasDescriptor from(Method attribute) {
+    AliasDescriptor descriptor = aliasDescriptorCache.get(attribute);
+    if (descriptor != null) {
+        return descriptor;
+    }
+
+    AliasFor aliasFor = attribute.getAnnotation(AliasFor.class);
+    if (aliasFor == null) {
+        return null;
+    }
+
+    descriptor = new AliasDescriptor(attribute, aliasFor);
+    descriptor.validate();
+    aliasDescriptorCache.put(attribute, descriptor);
+    return descriptor;
+}
+</code></pre>
                 
                   
                 
@@ -455,27 +469,6 @@
         
 <footer class="md-footer">
   
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../java/JUC/ReentrantLock/" title="ReentrantLock" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                ReentrantLock
-              </span>
-            </div>
-          </a>
-        
-        
-      </nav>
-    </div>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -493,9 +486,9 @@
       
     </div>
     
-      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../../../assets/javascripts/application.808e90bb.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       
     
   </body>
