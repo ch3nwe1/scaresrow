@@ -578,12 +578,17 @@ public final void await() throws InterruptedException {
     Node node = addConditionWaiter();
     //释放当前线程持有的锁
     int savedState = fullyRelease(node);
+    //中断方式:1.THROW_IE,抛出中断异常2.REINTERRUPT,调用线程的中断方法
     int interruptMode = 0;
+    //判断是否在同步队列,如果不在同步队列,线程挂起等待.
+    //??? 为什么这个节点会在同步队列中呢?我苦思这段代码,终于再后面知道了(ps:当然是在调用唤醒方法的时候啦)
     while (!isOnSyncQueue(node)) {
         LockSupport.park(this);
+        //检查线程在等待期间是否中断,不为0代表中断
         if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
             break;
     }
+    // acquireQueued方法将当前节点添加到同步队列中,返回true,代表线程中断
     if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
         interruptMode = REINTERRUPT;
     if (node.nextWaiter != null) // clean up if cancelled
@@ -665,3 +670,428 @@ final int fullyRelease(Node node) {
     }
 }
 ```
+
+```java
+//判断是否在同步队列
+//1.节点的waitStatus等于CONDITION, 并且前一节点为null,则返回false,因为这是Condition Queue
+final boolean isOnSyncQueue(Node node) {
+    if (node.waitStatus == Node.CONDITION || node.prev == null)
+        return false;
+    if (node.next != null) // If has successor, it must be on queue
+        return true;
+    //从队列最后向前查找该节点
+    return findNodeFromTail(node);
+}
+```
+
+```java
+private int checkInterruptWhileWaiting(Node node) {
+    //如果线程中断,返回transferAfterCancelledWait(node) ? THROW_IE : REINTERRUPT,否则为0
+    return Thread.interrupted() ?
+        (transferAfterCancelledWait(node) ? THROW_IE : REINTERRUPT) :
+        0;
+}
+```
+
+```java
+//线程中断后,不必再等待,将该节点转化为Sync Queue,并添加到队列末尾
+final boolean transferAfterCancelledWait(Node node) {
+    if (compareAndSetWaitStatus(node, Node.CONDITION, 0)) {
+        enq(node);
+        return true;
+    }
+    /*
+     * If we lost out to a signal(), then we can't proceed
+     * until it finishes its enq().  Cancelling during an
+     * incomplete transfer is both rare and transient, so just
+     * spin.
+     */
+    //如果不在同步队列中,线程让步
+    while (!isOnSyncQueue(node))
+        Thread.yield();
+    return false;
+}
+```
+
+### awaitUninterruptibly
+
+```java
+//不会抛出异常的线程等待
+public final void awaitUninterruptibly() {
+    //添加一个等待节点到Condition Queue
+    Node node = addConditionWaiter();
+    //释放锁
+    int savedState = fullyRelease(node);
+    boolean interrupted = false;
+    while (!isOnSyncQueue(node)) {
+        LockSupport.park(this);
+        if (Thread.interrupted())
+            interrupted = true;
+    }
+    //如果线程中断恢复中断状态
+    if (acquireQueued(node, savedState) || interrupted)
+        selfInterrupt();
+}
+```
+
+### awaitNanos(nanosTimeout) 
+
+```java
+// 指定超时时间的等待
+public final long awaitNanos(long nanosTimeout)
+        throws InterruptedException {
+    //如果线程中断,直接抛出异常
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    //添加一个等待节点到Condition Queue中
+    Node node = addConditionWaiter();
+    //先释放锁
+    int savedState = fullyRelease(node);
+    //线程等待的结束日期
+    final long deadline = System.nanoTime() + nanosTimeout;
+    int interruptMode = 0;
+    //首先判断是否在同步队列中
+    while (!isOnSyncQueue(node)) {
+        //如果超时时间小于等于0,取消等待,然后将当前节点添加到Sync Deque中
+        if (nanosTimeout <= 0L) {
+            transferAfterCancelledWait(node);
+            break;
+        }
+        //如果超时时间超过1000,线程挂起,直到超时时间结束
+        if (nanosTimeout >= spinForTimeoutThreshold)
+            LockSupport.parkNanos(this, nanosTimeout);
+        //如果线程中断,直接跳出循环
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+        nanosTimeout = deadline - System.nanoTime();
+    }
+    //获取锁,如果中断,报告
+    if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    //清理Condition Queue
+    if (node.nextWaiter != null)
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+    //返回等待剩余的时间
+    return deadline - System.nanoTime();
+}
+```
+
+### await(long time, TimeUnit unit) 
+
+```java
+// 此处实现与awaitNanos大致相同,主要在其返回值代表是否超时,如果提前唤醒返回true
+public final boolean await(long time, TimeUnit unit)
+        throws InterruptedException {
+    long nanosTimeout = unit.toNanos(time);
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    Node node = addConditionWaiter();
+    int savedState = fullyRelease(node);
+    final long deadline = System.nanoTime() + nanosTimeout;
+    boolean timedout = false;
+    int interruptMode = 0;
+    while (!isOnSyncQueue(node)) {
+        if (nanosTimeout <= 0L) {
+            //这里可能等待节点被提前唤醒,导致节点转化失败
+            timedout = transferAfterCancelledWait(node);
+            break;
+        }
+        if (nanosTimeout >= spinForTimeoutThreshold)
+            LockSupport.parkNanos(this, nanosTimeout);
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+        nanosTimeout = deadline - System.nanoTime();
+    }
+    if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null)
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+    return !timedout;
+}
+```
+
+### awaitUntil(Date deadline)
+
+```java
+public final boolean awaitUntil(Date deadline)
+        throws InterruptedException {
+    //绝对日期 以毫秒为单位
+    long abstime = deadline.getTime();
+    if (Thread.interrupted())
+        throw new InterruptedException();
+    Node node = addConditionWaiter();
+    int savedState = fullyRelease(node);
+    boolean timedout = false;
+    int interruptMode = 0;
+    while (!isOnSyncQueue(node)) {
+        if (System.currentTimeMillis() > abstime) {
+            timedout = transferAfterCancelledWait(node);
+            break;
+        }
+        LockSupport.parkUntil(this, abstime);
+        if ((interruptMode = checkInterruptWhileWaiting(node)) != 0)
+            break;
+    }
+    if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
+        interruptMode = REINTERRUPT;
+    if (node.nextWaiter != null)
+        unlinkCancelledWaiters();
+    if (interruptMode != 0)
+        reportInterruptAfterWait(interruptMode);
+    return !timedout;
+}
+```
+
+### signal
+
+```java
+public final void signal() {
+    //必须是独占模式,当前线程必须持有锁
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    //唤醒第一个等待节点
+    Node first = firstWaiter;
+    if (first != null)
+        doSignal(first);
+}
+```
+
+```java
+private void doSignal(Node first) {
+    do {
+        //将第一个节点更新为第二个节点,如果第二个节点为null,说明Condition Queue是空的,需要更新				//lastWaiter为null
+        if ( (firstWaiter = first.nextWaiter) == null)
+            lastWaiter = null;
+        //断开与其他节点的链接
+        first.nextWaiter = null;
+    } while (!transferForSignal(first) &&
+             (first = firstWaiter) != null);//转换节点状态,并添加到同步队列,如果失败,返回false,继续唤醒下一个等待的节点
+}
+```
+
+```java
+//转换这个节点到Sync Queue
+final boolean transferForSignal(Node node) {
+    /*
+     * If cannot change waitStatus, the node has been cancelled.
+     */
+    if (!compareAndSetWaitStatus(node, Node.CONDITION, 0))
+        return false;
+
+    /*
+     * Splice onto queue and try to set waitStatus of predecessor to
+     * indicate that thread is (probably) waiting. If cancelled or
+     * attempt to set waitStatus fails, wake up to resync (in which
+     * case the waitStatus can be transiently and harmlessly wrong).
+     */
+    //添加到同步队列的末尾,并返回前一节点,如果前一个节点状态是取消的或者更新状态失败,唤醒该线程来重新同步
+    Node p = enq(node);
+    int ws = p.waitStatus;
+    if (ws > 0 || !compareAndSetWaitStatus(p, ws, Node.SIGNAL))
+        LockSupport.unpark(node.thread);
+    return true;
+}
+```
+
+### signalAll
+
+```java
+public final void signalAll() {
+    //判断当前线程是否持有锁
+    if (!isHeldExclusively())
+        throw new IllegalMonitorStateException();
+    Node first = firstWaiter;
+    //唤醒所有节点
+    if (first != null)
+        doSignalAll(first);
+}
+```
+
+```java
+//单向队列依次唤醒所有等待的节点
+private void doSignalAll(Node first) {
+    lastWaiter = firstWaiter = null;
+    do {
+        Node next = first.nextWaiter;
+        first.nextWaiter = null;
+        transferForSignal(first);
+        first = next;
+    } while (first != null);
+}
+```
+
+## 其他API
+
+### getHoldCount
+
+```java
+public int getHoldCount() {
+    return sync.getHoldCount();
+}
+```
+
+```java
+final int getHoldCount() {
+    //如果当前线程持有锁,返回state的值,否则为0
+    return isHeldExclusively() ? getState() : 0;
+}
+```
+
+### isHeldByCurrentThread
+
+```java
+public boolean isHeldByCurrentThread() {
+    //判断当前线程是否持有锁
+    return sync.isHeldExclusively();
+}
+```
+
+### isLocked
+
+> 锁是否空闲,以state值是否为0判断
+
+```java
+public boolean isLocked() {
+    return sync.isLocked();
+}
+```
+
+### isFair
+
+> 是否为公平锁
+>
+> ```java
+> public final boolean isFair() {
+>     return sync instanceof FairSync;
+> }
+> ```
+
+### getOwner
+
+> 获取锁持有的线程,如果锁空闲返回null
+>
+> ```java
+> final Thread getOwner() {
+>     return getState() == 0 ? null : getExclusiveOwnerThread();
+> }
+> ```
+
+### hasQueuedThreads
+
+> 是否有排队的线程
+>
+> ```java
+> public final boolean hasQueuedThreads() {
+>     return head != tail;
+> }
+> ```
+
+### hasQueuedThread
+
+> 判断该线程是否在排队
+>
+> ```java
+> public final boolean hasQueuedThread(Thread thread) {
+>     return sync.isQueued(thread);
+> }
+> ```
+>
+> ```java
+> public final boolean isQueued(Thread thread) {
+>     if (thread == null)
+>         throw new NullPointerException();
+>     for (Node p = tail; p != null; p = p.prev)
+>         if (p.thread == thread)
+>             return true;
+>     return false;
+> }
+> ```
+
+### getQueueLength
+
+> 同步队列的长度
+>
+> ```java
+> public final int getQueueLength() {
+>     return sync.getQueueLength();
+> }
+> ```
+>
+> ```java
+> public final int getQueueLength() {
+>     int n = 0;
+>     for (Node p = tail; p != null; p = p.prev) {
+>         if (p.thread != null)
+>             ++n;
+>     }
+>     return n;
+> }
+> ```
+
+### getQueuedThreads
+
+> 获取所有排队的线程
+>
+> ```java
+> protected Collection<Thread> getQueuedThreads() {
+>     return sync.getQueuedThreads();
+> }
+> ```
+>
+> ```java
+> public final Collection<Thread> getQueuedThreads() {
+>     ArrayList<Thread> list = new ArrayList<Thread>();
+>     for (Node p = tail; p != null; p = p.prev) {
+>         Thread t = p.thread;
+>         if (t != null)
+>             list.add(t);
+>     }
+>     return list;
+> }
+> ```
+
+### hasWaiters
+
+> 是否由线程等待
+>
+> ```java
+> public boolean hasWaiters(Condition condition) {
+>     if (condition == null)
+>         throw new NullPointerException();
+>     if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject))
+>         throw new IllegalArgumentException("not owner");
+>     return sync.hasWaiters((AbstractQueuedSynchronizer.ConditionObject)condition);
+> }
+> ```
+>
+> ```java
+> public final boolean hasWaiters(ConditionObject condition) {
+>     if (!owns(condition))
+>         throw new IllegalArgumentException("Not owner");
+>     return condition.hasWaiters();
+> }
+> ```
+>
+> ```java
+> protected final boolean hasWaiters() {
+>     if (!isHeldExclusively())
+>         throw new IllegalMonitorStateException();
+>     for (Node w = firstWaiter; w != null; w = w.nextWaiter) {
+>         if (w.waitStatus == Node.CONDITION)
+>             return true;
+>     }
+>     return false;
+> }
+> ```
+
+### getWaitQueueLength
+
+> Condition Queue的长度
+
+### getWaitingThreads
+
+> Condition Queue中所有等待的线程
