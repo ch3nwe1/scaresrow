@@ -15,9 +15,11 @@ nav:
       - Java: 
         - 字符串: java/String.md
         - ReentrantLock: java/JUC/ReentrantLock.md
+        - Queue: java/JUC/Queue.md
+        - Blocking: /java/JUC/BlockingQueue.md 
       - Redis:
         - redis-replication Redis/redis-replication.md
     - 关于: about.md
 
 
-theme: material
+theme: mkdocs
