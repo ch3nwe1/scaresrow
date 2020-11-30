@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/python/基础教程/注释/">
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/JUC/BlockingQueue/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>注释 - 稻草人日记</title>
+        <title>BlockingQueue<E> - 稻草人日记</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                             <li >
                                 <a href="../../..">主页</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">程序 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -61,28 +61,28 @@
     <a href="#">基础教程</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">注释</a>
+<li >
+    <a href="../../../python/基础教程/注释/">注释</a>
 </li>
             
 <li >
-    <a href="../元组与列表/">元组与列表</a>
+    <a href="../../../python/基础教程/元组与列表/">元组与列表</a>
 </li>
             
 <li >
-    <a href="../字符串/">字符串</a>
+    <a href="../../../python/基础教程/字符串/">字符串</a>
 </li>
             
 <li >
-    <a href="../字典/">字典</a>
+    <a href="../../../python/基础教程/字典/">字典</a>
 </li>
             
 <li >
-    <a href="../条件控制与循环结构/">条件控制和循环结构</a>
+    <a href="../../../python/基础教程/条件控制与循环结构/">条件控制和循环结构</a>
 </li>
             
 <li >
-    <a href="../函数/">函数</a>
+    <a href="../../../python/基础教程/函数/">函数</a>
 </li>
     </ul>
   </li>
@@ -94,15 +94,15 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../java/String/">字符串</a>
+    <a href="../../String/">字符串</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/ReentrantLock/">ReentrantLock</a>
+    <a href="../ReentrantLock/">ReentrantLock</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/Queue/">Queue</a>
+    <a href="../Queue/">Queue</a>
 </li>
             
 <li >
@@ -137,16 +137,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../..">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../元组与列表/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -155,38 +145,80 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#python">Python代码注释</a></li>
-        <li class="main "><a href="#_1">单引号（'''）</a></li>
-        <li class="main "><a href="#_2">双引号（"""）</a></li>
+        <li class="main active"><a href="#blockingqueue">BlockingQueue</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h4 id="python">Python代码注释</h4>
-<p>在Python中，井号（<strong>#</strong>）比较特殊：在代码中，井号后面到行尾的所有内容都将被忽略</p>
-<pre><code class="python"># 打印Hello World！
-print('Hello World！')
+<h1 id="blockingqueue">BlockingQueue<E></h1>
+<pre><code class="java">boolean add(E e);
 </code></pre>
 
-<h4 id="_1">单引号（'''）</h4>
-<pre><code class="python">'''
-这是多行注释，用三个单引号
-这是多行注释，用三个单引号 
-这是多行注释，用三个单引号
-'''
+<blockquote>
+<p>添加指定元素到队列中,如果队列已满,抛出IllegalStateException</p>
+</blockquote>
+<pre><code class="java">boolean offer(E e);
 </code></pre>
 
-<h4 id="_2">双引号（"""）</h4>
-<pre><code class="python">&quot;&quot;&quot;
-这是多行注释，用三个双引号
-这是多行注释，用三个双引号 
-这是多行注释，用三个双引号
-&quot;&quot;&quot;
+<blockquote>
+<p>添加指定元素到队列中,如果队列已满,返回false</p>
+</blockquote>
+<pre><code class="java">void put(E e) throws InterruptedException;
 </code></pre>
 
-<p>切记一点，要在文件开头加上文件编码，否则有中文字符就会出错
-<code># -*- coding:utf-8 -*-</code><br />
-<code># coding=utf-8</code></p></div>
+<blockquote>
+<p>插入指定元素到队列中,如果队列已满,线程等待直到队列中有其他元素被移除,如果等待过程中线程中断抛出异常</p>
+</blockquote>
+<pre><code class="java">boolean offer(E e, long timeout, TimeUnit unit)
+    throws InterruptedException;
+</code></pre>
+
+<blockquote>
+<p>在指定时间内插入元素,成功返回true,超时后返回false,等待期间线程中断抛出异常</p>
+</blockquote>
+<pre><code class="java">E take() throws InterruptedException;
+</code></pre>
+
+<blockquote>
+<p>获取并移除队列的第一个元素,线程等待直到队列中的元素可以移除,如果线程中断抛出异常</p>
+</blockquote>
+<pre><code class="java">E poll(long timeout, TimeUnit unit)
+    throws InterruptedException;
+</code></pre>
+
+<blockquote>
+<p>在指定时间内等待移除并获取队列的第一个元素,超时将返回null,等待期间线程中断将抛出异常</p>
+</blockquote>
+<pre><code class="java">int remainingCapacity();
+</code></pre>
+
+<blockquote>
+<p>返回队列中的剩余容量</p>
+</blockquote>
+<pre><code class="java">boolean remove(Object o);
+</code></pre>
+
+<blockquote>
+<p>移除队列中指定的元素,如果成功返回true,否则返回false</p>
+</blockquote>
+<pre><code class="java">public boolean contains(Object o);
+</code></pre>
+
+<blockquote>
+<p>如果队列中包含指定元素返回true,否则返回false</p>
+</blockquote>
+<pre><code class="java">int drainTo(Collection&lt;? super E&gt; c);
+</code></pre>
+
+<blockquote>
+<p>将队列中所有的元素移除,添加到集合c中,返回传输的数量</p>
+</blockquote>
+<pre><code class="java">int drainTo(Collection&lt;? super E&gt; c, int maxElements);
+</code></pre>
+
+<blockquote>
+<p>将队列中所有的元素移除,添加到集合c中,最多添加maxElements的数量,返回实际传输的数量</p>
+</blockquote></div>
         </div>
 
         <footer class="col-md-12">
