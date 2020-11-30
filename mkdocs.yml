@@ -16,10 +16,15 @@ nav:
         - 字符串: java/String.md
         - ReentrantLock: java/JUC/ReentrantLock.md
         - Queue: java/JUC/Queue.md
-        - Blocking: /java/JUC/BlockingQueue.md
-        - PriorityQueue: /java/Collection/PriorityQueue.md 
+        - Blocking: java/JUC/BlockingQueue.md
+        - PriorityQueue: java/Collection/PriorityQueue.md 
+        - ArrayBlockingQueue: java/JUC/ArrayBlockingQueue.md
+        - DelayQueue: java/JUC/DelayQueue.md
       - Redis:
-        - redis-replication Redis/redis-replication.md
+        - redis command: Redis/redis command.md
+        - redis-replication: Redis/redis-replication.md
+      - VIM:
+        - VIM: VIM/vim.md
     - 关于: about.md
 
 
