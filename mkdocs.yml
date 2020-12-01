@@ -21,6 +21,7 @@ nav:
         - ArrayBlockingQueue: java/JUC/ArrayBlockingQueue.md
         - DelayQueue: java/JUC/DelayQueue.md
         - PriorityBlockingQueue: java/JUC/PriorityBlockingQueue.md
+        - FutureTask: java/JUC/FutureTask.md
       - Redis:
         - redis command: Redis/redis command.md
         - redis-replication: Redis/redis-replication.md
