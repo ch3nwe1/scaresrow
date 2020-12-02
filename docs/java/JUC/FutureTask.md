@@ -51,3 +51,40 @@ public boolean isDone() {
     return state != NEW;
 }
 ```
+
+```java
+public void run() {
+    //如果状态不是NEW,或者CAS设置runner为当前线程时失败,任务结束运行
+    if (state != NEW ||
+        !UNSAFE.compareAndSwapObject(this, runnerOffset,
+                                     null, Thread.currentThread()))
+        return;
+    try {
+        Callable<V> c = callable;// 获取执行任务
+        if (c != null && state == NEW) {
+            V result;
+            boolean ran;//任务运行成功标识
+            try {
+                result = c.call();//调用任务运行结果
+                ran = true;
+            } catch (Throwable ex) {
+                //任务执行期间发生异常,更新状态为EXCEPTIONAL,
+                result = null;
+                ran = false;
+                setException(ex);
+            }
+            if (ran)
+                set(result);
+        }
+    } finally {
+        // runner must be non-null until state is settled to
+        // prevent concurrent calls to run()
+        runner = null;
+        // state must be re-read after nulling runner to prevent
+        // leaked interrupts
+        int s = state;
+        if (s >= INTERRUPTING)
+            handlePossibleCancellationInterrupt(s);
+    }
+}
+```
