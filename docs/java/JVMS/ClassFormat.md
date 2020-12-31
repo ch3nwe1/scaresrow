@@ -320,14 +320,16 @@ cp_info {
 
 下面介绍每一个tag对应的info数组
 
-```
+```json
+//占用三个字节
 CONSTANT_Class_info {
     u1 tag;
     u2 name_index; # 指向常量池表中的索引
 }
 ```
 
-```
+```json
+//占用五个字节
 CONSTANT_Fieldref_info {
  u1 tag;
  u2 class_index; //所属类的索引
@@ -345,14 +347,16 @@ CONSTANT_InterfaceMethodref_info {
 }
 ```
 
-```
+```json
+//占用三个字节
 CONSTANT_String_info {
  u1 tag;
  u2 string_index; //字符串索引
 }
 ```
 
-```
+```java
+//占用五个字节
 CONSTANT_Integer_info {
  u1 tag;
  u4 bytes;
@@ -363,7 +367,8 @@ CONSTANT_Float_info {
 }
 ```
 
-```
+```java
+//5个字节
 CONSTANT_NameAndType_info {
  u1 tag;
  u2 name_index; // 名称索引
@@ -371,7 +376,8 @@ CONSTANT_NameAndType_info {
 }
 ```
 
-```
+```java
+//非固定长度
 CONSTANT_Utf8_info {
  u1 tag;
  u2 length;
@@ -379,7 +385,8 @@ CONSTANT_Utf8_info {
 }
 ```
 
-```
+```java
+// 4个字节
 CONSTANT_MethodHandle_info {
  u1 tag;
  u1 reference_kind;
@@ -387,14 +394,16 @@ CONSTANT_MethodHandle_info {
 }
 ```
 
-```
+```java
+//3个字节
 CONSTANT_MethodType_info {
  u1 tag;
  u2 descriptor_index;
 }
 ```
 
-```
+```java
+//5个字节
 CONSTANT_InvokeDynamic_info {
  u1 tag;
  u2 bootstrap_method_attr_index;
@@ -402,6 +411,69 @@ CONSTANT_InvokeDynamic_info {
 }
 ```
 
+```java
+//9个字节
+CONSTANT_Long_info {
+ u1 tag;
+ u4 high_bytes;
+ u4 low_bytes;
+}
+CONSTANT_Double_info {
+ u1 tag;
+ u4 high_bytes;
+ u4 low_bytes;
+}
+```
+
+
+
 紧随常量池数量后面的字节是**`09`**, 代表是一个`CONSTANT_Fieldref`,其格式包含1个字节的tag, 2个字节的`class_index`(**`00 04`**)和2个字节的`name_and_type_index`(**`00 1C`**),所以常量池表的第一个常量分析完毕,正好与反编译文件对应
 
 > #1 = Fieldref           #4.#28 // #1 代表第一个索引,#4,#28现在还不清楚,先不要着急,慢慢的分析
+
+### access_flags(u2)
+
+继常量池后的是2个字节的访问标识符
+
+
+
+| flag_name      | VALUE  | Interpretation                                 |
+| -------------- | ------ | ---------------------------------------------- |
+| ACC_PUBLIC     | 0x0001 | 声明public,可以在包的外面访问                  |
+| ACC_FINAL      | 0x0010 | 不能被继承                                     |
+| ACC_SUPER      | 0x0020 | 当被invokespecial指定调用时,针对特殊的父类方法 |
+| ACC_INTERFACE  | 0x0200 | 声明为一个接口,二不是一个类                    |
+| ACC_ABSTRACT   | 0x0400 | 抽象类,不能被实例化                            |
+| ACC_SYNTHETIC  | 0x1000 | 不会在源代码中出现,通过编译生成                |
+| ACC_ANNOTATION | 0x2000 | 声明为注解                                     |
+| ACC_ENUM       | 0x4000 | 声明为一个枚举类                               |
+
+### this_class(u2)
+
+2个字节的索引,指向常量池中的CONSTANT_Class_info,class_info的结构上文已经提过,在这里再说一下,class_info包含1个字节的tag和2个字节的索引指向常量池中CONSTANT_Utf8_info 常量
+
+```java
+CONSTANT_Class_info {
+ 	u1 tag; // (7)
+ 	u2 name_index;
+}
+
+CONSTANT_Utf8_info {
+ u1 tag; //(1)
+ u2 length;
+ u1 bytes[length];
+}
+```
+
+### super_class(u2)
+
+2个字节的索引,指向常量池中的CONSTANT_Class_info,class_info
+
+### interfaces_count(u2)
+
+2个字节,其值代表类实现接口的数量
+
+### interfaces[interfaces_count]
+
+按照源码中实现接口的顺序,每个接口的信息占用两个字节,其值指向常量池中的索引,(CONSTANT_Class_info)
+
