@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/JUC/ArrayBlockingQueue/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>ArrayBlockingQueue - 稻草人日记</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">稻草人日记</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">主页</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">程序 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Python</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">基础教程</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../python/基础教程/注释/">注释</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/元组与列表/">元组与列表</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/字符串/">字符串</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/字典/">字典</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/条件控制与循环结构/">条件控制和循环结构</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/函数/">函数</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Java</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../String/">字符串</a>
+</li>
+            
+<li >
+    <a href="../ReentrantLock/">ReentrantLock</a>
+</li>
+            
+<li >
+    <a href="../Queue/">Queue</a>
+</li>
+            
+<li >
+    <a href="../BlockingQueue/">Blocking</a>
+</li>
+            
+<li >
+    <a href="../../Collection/PriorityQueue/">PriorityQueue</a>
+</li>
+            
+<li class="active">
+    <a href="./">ArrayBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../DelayQueue/">DelayQueue</a>
+</li>
+            
+<li >
+    <a href="../PriorityBlockingQueue/">PriorityBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../FutureTask/">FutureTask</a>
+</li>
+            
+<li >
+    <a href="../ThreadPoolExecutor/">ThreadPoolExecutor</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">jaxws</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../jaxws/jaxws-2.3.pdf">jaxws-2.3</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/jax-ws-release-documentation.pdf">release-documentation</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Redis</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../Redis/redis command/">redis command</a>
+</li>
+            
+<li >
+    <a href="../../../Redis/redis-replication/">redis-replication</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">VIM</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../VIM/vim/">VIM</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../../../about/">关于</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="../../Collection/PriorityQueue/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../DelayQueue/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#arrayblockingqueue">ArrayBlockingQueue</a></li>
+            <li><a href="#_1">属性介绍</a></li>
+            <li><a href="#_2">构造器</a></li>
+            <li><a href="#_3">方法实现</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="arrayblockingqueue">ArrayBlockingQueue</h1>
+<blockquote>
+<p>ArrayBlockingQueue是基于数组实现的阻塞队列，队列中的元素排列按照先进先出的顺序。head再队列中时间最长，tail在队列中时间最短。新元素被插入到队列的尾部（tail）。获取元素从队列的头部（head）。</p>
+<p>数组中的元素固定，一旦创建不能被改变，如果将元素放入已满的队列将会阻塞，直到有元素被提取。同样提取一个空队列的元素将会阻塞，直到有元素插入队列。这个类支持公平与非公平两种策略，公平策略会降低吞吐量但也会减少饥饿</p>
+</blockquote>
+<h2 id="_1">属性介绍</h2>
+<ul>
+<li>final Object[] items; 用于存放队列中的元素，final代表一旦创建不可变</li>
+<li>int takeIndex; 队列中获取和移除元素的索引</li>
+<li>int putIndex; 队列中添加元素的索引</li>
+<li>int count;队列中元素的数量</li>
+<li>final ReentrantLock lock; 排他锁，用于队列读写同步</li>
+<li>private final Condition notEmpty;用于队列不为空时线程唤醒的条件</li>
+<li>private final Condition notFull;用于队列不满时线程唤醒的条件</li>
+<li>transient Itrs itrs = null; ？？？</li>
+</ul>
+<h2 id="_2">构造器</h2>
+<pre><code class="java">//capacity 队列的长度，默认非公平策略
+public ArrayBlockingQueue(int capacity) {    this(capacity, false);}
+</code></pre>
+
+<pre><code class="java">public ArrayBlockingQueue(int capacity, boolean fair) {
+    if (capacity &lt;= 0)
+        throw new IllegalArgumentException();
+    //初始化队列数组
+    this.items = new Object[capacity];
+    //初始化同步锁
+    lock = new ReentrantLock(fair);
+    notEmpty = lock.newCondition();
+    notFull =  lock.newCondition();
+}
+</code></pre>
+
+<pre><code class="java">//向队列中添加默认元素
+public ArrayBlockingQueue(int capacity, boolean fair,
+                              Collection&lt;? extends E&gt; c) {
+    this(capacity, fair);
+
+    final ReentrantLock lock = this.lock;
+    //开始我还在怀疑，即使多线程环境，也没有必要在构造器中加锁，所以在这里加锁只是为了增加共享变量的可见性
+    lock.lock(); // Lock only for visibility, not mutual exclusion
+    try {
+        int i = 0;
+        try {
+            for (E e : c) {
+                //检查是否为空
+                checkNotNull(e);
+                items[i++] = e;
+            }
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new IllegalArgumentException();//如果集合c中元素的数量大于队列的长度
+        }
+        count = i;//更新元素的数量
+        putIndex = (i == capacity) ? 0 : i;//更新tail的位置，如果到了最后，再从队列的第一个开始
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h2 id="_3">方法实现</h2>
+<h3 id="offer">offer</h3>
+<pre><code class="java">public boolean offer(E e) {
+    //  检查是否为空
+    checkNotNull(e);
+    final ReentrantLock lock = this.lock;
+    //同步锁
+    lock.lock();
+    try {
+        //如果数量已满，返回false
+        if (count == items.length)
+            return false;
+        else {
+            //添加到队列中
+            enqueue(e);
+            return true;
+        }
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<pre><code class="java">private void enqueue(E x) {
+    // assert lock.getHoldCount() == 1;
+    // assert items[putIndex] == null;
+    // 将元素添加到队列中，如果到了容器的最后位置，再从头开始，元素的数量+1，并且队列不为空的条件唤醒
+    final Object[] items = this.items;
+    items[putIndex] = x;
+    if (++putIndex == items.length)
+        putIndex = 0;
+    count++;
+    notEmpty.signal();
+}
+</code></pre>
+
+<h3 id="put">put</h3>
+<pre><code class="java">// put方法属于阻塞式添加元素，直到添加成功为止
+public void put(E e) throws InterruptedException {
+    //检查元素是否为空
+    checkNotNull(e);
+    //胡哦去同步锁
+    final ReentrantLock lock = this.lock;
+    //可中断的加锁，如果线程中断，抛出异常
+    lock.lockInterruptibly();
+    try {
+        //如果队列已满，线程等待，否则将其添加到队列中
+        while (count == items.length)
+            notFull.await();
+        enqueue(e);
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="offe-e-long-timeout-timeunit-unit">off(E e, long timeout, TimeUnit unit)</h3>
+<pre><code class="java">// 在指定时间内添加元素到队列，如果成功返回true,可能会阻塞
+public boolean offer(E e, long timeout, TimeUnit unit)
+        throws InterruptedException {
+    //检查是否为空
+    checkNotNull(e);
+    long nanos = unit.toNanos(timeout);
+    final ReentrantLock lock = this.lock;
+    lock.lockInterruptibly();
+    try {
+        while (count == items.length) {
+            if (nanos &lt;= 0)
+                return false;
+            nanos = notFull.awaitNanos(nanos);
+        }
+        enqueue(e);
+        return true;
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="poll">poll</h3>
+<pre><code class="java">// 获取并移除队列head,非阻塞式，队列不为空返回head，为空返回null
+public E poll() {
+    final ReentrantLock lock = this.lock;
+    lock.lock();
+    try {
+        //dequeue移除队列
+        return (count == 0) ? null : dequeue();
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<pre><code class="java">private E dequeue() {
+    // assert lock.getHoldCount() == 1;
+    // assert items[takeIndex] != null;
+    final Object[] items = this.items;
+    @SuppressWarnings(&quot;unchecked&quot;)
+    E x = (E) items[takeIndex];//取出head位置的元素
+    items[takeIndex] = null;//置为空。
+    if (++takeIndex == items.length)//头位置+1,如果到了容器最后的索引，返回到开始位置
+        takeIndex = 0;
+    count--;//元素的数量-1
+    if (itrs != null)
+        itrs.elementDequeued(); // ？？？稍后解析
+    notFull.signal(); //容器不满的条件唤醒
+    return x;//返回该元素
+}
+</code></pre>
+
+<h3 id="take">take</h3>
+<pre><code class="java">//阻塞式获取并移除队列的第一个元素，直到获取成功为止，如果线程中断，抛出异常
+public E take() throws InterruptedException {
+    final ReentrantLock lock = this.lock;
+    lock.lockInterruptibly();
+    try {
+        while (count == 0)
+            notEmpty.await();
+        return dequeue();
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="polllong-timeout-timeunit-unit">poll(long timeout, TimeUnit unit)</h3>
+<pre><code class="java">//指定时间内获取并移除队列中的head元素
+public E poll(long timeout, TimeUnit unit) throws InterruptedException {
+    long nanos = unit.toNanos(timeout);
+    final ReentrantLock lock = this.lock;
+    lock.lockInterruptibly();
+    try {
+        while (count == 0) {
+            if (nanos &lt;= 0)
+                return null;
+            nanos = notEmpty.awaitNanos(nanos);
+        }
+        return dequeue();
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="peek">peek</h3>
+<pre><code class="java">//获取队列中的head元素,如果队列为空返回null
+public E peek() {
+    final ReentrantLock lock = this.lock;
+    lock.lock();
+    try {
+        return itemAt(takeIndex); // null when queue is empty
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="count">count</h3>
+<pre><code class="java">//返回队列中元素的数量
+public int size() {
+    final ReentrantLock lock = this.lock;
+    lock.lock();
+    try {
+        return count;
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<h3 id="remainingcapacity">remainingCapacity</h3>
+<pre><code class="java">//返回队列中的剩余容量
+public int remainingCapacity() {
+     final ReentrantLock lock = this.lock;
+     lock.lock();
+     try {
+         return items.length - count;
+     } finally {
+         lock.unlock();
+     }
+}
+</code></pre>
+
+<h3 id="remove">remove</h3>
+<pre><code class="java">//移除队列中的指定元素
+//如果对象为空，获取队列为空，或者元素不存在于队列中，返回false
+//从head开始向tail查找
+public boolean remove(Object o) {
+    if (o == null) return false;
+    final Object[] items = this.items;
+    final ReentrantLock lock = this.lock;
+    lock.lock();
+    try {
+        if (count &gt; 0) {
+            final int putIndex = this.putIndex;
+            int i = takeIndex;
+            do {
+                if (o.equals(items[i])) {
+                    removeAt(i);
+                    return true;    
+                }
+                if (++i == items.length)
+                    i = 0;
+            } while (i != putIndex);
+        }
+        return false;
+    } finally {
+        lock.unlock();
+    }
+}
+</code></pre>
+
+<pre><code class="java">//移除指定位置的元素
+void removeAt(final int removeIndex) {
+    // assert lock.getHoldCount() == 1;
+    // assert items[removeIndex] != null;
+    // assert removeIndex &gt;= 0 &amp;&amp; removeIndex &lt; items.length;
+    final Object[] items = this.items;
+    //如果移除的是head元素，将该索引位置的元素置为空，head向后移动，元素数量-1
+    if (removeIndex == takeIndex) {
+        // removing front item; just advance
+        items[takeIndex] = null;
+        if (++takeIndex == items.length)
+            takeIndex = 0;
+        count--;
+        if (itrs != null)
+            itrs.elementDequeued();
+    } else {
+        // an &quot;interior&quot; remove
+
+        // slide over all others up through putIndex.
+        final int putIndex = this.putIndex;
+        for (int i = removeIndex;;) {
+            int next = i + 1;
+            if (next == items.length)
+                next = 0;
+            if (next != putIndex) {
+                items[i] = items[next];
+                i = next;
+            } else {
+                items[i] = null;
+                this.putIndex = i;
+                break;
+            }
+        }
+        count--;
+        if (itrs != null)
+            itrs.removedAt(removeIndex);
+    }
+    notFull.signal();
+}
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

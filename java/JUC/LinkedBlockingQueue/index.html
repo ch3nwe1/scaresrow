@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/python/基础教程/注释/">
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/JUC/LinkedBlockingQueue/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>注释 - 稻草人日记</title>
+        <title>LinkedBlockingQueue - 稻草人日记</title>
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                             <li >
                                 <a href="../../..">主页</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">程序 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -61,28 +61,28 @@
     <a href="#">基础教程</a>
     <ul class="dropdown-menu">
             
-<li class="active">
-    <a href="./">注释</a>
+<li >
+    <a href="../../../python/基础教程/注释/">注释</a>
 </li>
             
 <li >
-    <a href="../元组与列表/">元组与列表</a>
+    <a href="../../../python/基础教程/元组与列表/">元组与列表</a>
 </li>
             
 <li >
-    <a href="../字符串/">字符串</a>
+    <a href="../../../python/基础教程/字符串/">字符串</a>
 </li>
             
 <li >
-    <a href="../字典/">字典</a>
+    <a href="../../../python/基础教程/字典/">字典</a>
 </li>
             
 <li >
-    <a href="../条件控制与循环结构/">条件控制和循环结构</a>
+    <a href="../../../python/基础教程/条件控制与循环结构/">条件控制和循环结构</a>
 </li>
             
 <li >
-    <a href="../函数/">函数</a>
+    <a href="../../../python/基础教程/函数/">函数</a>
 </li>
     </ul>
   </li>
@@ -94,43 +94,43 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../java/String/">字符串</a>
+    <a href="../../String/">字符串</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/ReentrantLock/">ReentrantLock</a>
+    <a href="../ReentrantLock/">ReentrantLock</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/Queue/">Queue</a>
+    <a href="../Queue/">Queue</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/BlockingQueue/">Blocking</a>
+    <a href="../BlockingQueue/">Blocking</a>
 </li>
             
 <li >
-    <a href="../../../java/Collection/PriorityQueue/">PriorityQueue</a>
+    <a href="../../Collection/PriorityQueue/">PriorityQueue</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/ArrayBlockingQueue/">ArrayBlockingQueue</a>
+    <a href="../ArrayBlockingQueue/">ArrayBlockingQueue</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/DelayQueue/">DelayQueue</a>
+    <a href="../DelayQueue/">DelayQueue</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/PriorityBlockingQueue/">PriorityBlockingQueue</a>
+    <a href="../PriorityBlockingQueue/">PriorityBlockingQueue</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/FutureTask/">FutureTask</a>
+    <a href="../FutureTask/">FutureTask</a>
 </li>
             
 <li >
-    <a href="../../../java/JUC/ThreadPoolExecutor/">ThreadPoolExecutor</a>
+    <a href="../ThreadPoolExecutor/">ThreadPoolExecutor</a>
 </li>
             
   <li class="dropdown-submenu">
@@ -138,11 +138,11 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../java/jaxws/jaxws-2.3.pdf">jaxws-2.3</a>
+    <a href="../../jaxws/jaxws-2.3.pdf">jaxws-2.3</a>
 </li>
             
 <li >
-    <a href="../../../java/jaxws/jax-ws-release-documentation.pdf">release-documentation</a>
+    <a href="../../jaxws/jax-ws-release-documentation.pdf">release-documentation</a>
 </li>
     </ul>
   </li>
@@ -185,16 +185,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../../..">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../元组与列表/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -203,38 +193,197 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#python">Python代码注释</a></li>
-        <li class="main "><a href="#_1">单引号（'''）</a></li>
-        <li class="main "><a href="#_2">双引号（"""）</a></li>
+        <li class="main active"><a href="#linkedblockingqueue">LinkedBlockingQueue</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h4 id="python">Python代码注释</h4>
-<p>在Python中，井号（<strong>#</strong>）比较特殊：在代码中，井号后面到行尾的所有内容都将被忽略</p>
-<pre><code class="python"># 打印Hello World！
-print('Hello World！')
+<h1 id="linkedblockingqueue">LinkedBlockingQueue</h1>
+<blockquote>
+<p>LinkedBlockingQueue是链式结构可选边界阻塞队列.</p>
+</blockquote>
+<pre><code class="java">//阻塞式插入一个元素到指定队列
+public void put(E e) throws InterruptedException {
+    //如果元素为空抛出异常
+    if (e == null) throw new NullPointerException();
+    // Note: convention in all put/take/etc is to preset local var
+    // holding count negative to indicate failure unless set.
+    int c = -1;
+    //创建链式节点
+    Node&lt;E&gt; node = new Node&lt;E&gt;(e);
+    final ReentrantLock putLock = this.putLock;
+    final AtomicInteger count = this.count;
+    putLock.lockInterruptibly(); //获取锁
+    try {
+        /*
+         * Note that count is used in wait guard even though it is
+         * not protected by lock. This works because count can
+         * only decrease at this point (all other puts are shut
+         * out by lock), and we (or some other waiting put) are
+         * signalled if it ever changes from capacity. Similarly
+         * for all other uses of count in other wait guards.
+         */
+        //如果队列已满,线程等待
+        while (count.get() == capacity) {
+            notFull.await();
+        }
+        //将节点添加到队列尾部
+        enqueue(node);
+        //获取元素数量
+        c = count.getAndIncrement();
+        //如果元素小于容器容量,队列不满的线程唤醒
+        if (c + 1 &lt; capacity)
+            notFull.signal();
+    } finally {
+        putLock.unlock();
+    }
+    if (c == 0)
+        //队列第一次添加节点,不为空线程唤醒
+        signalNotEmpty();
+}
 </code></pre>
 
-<h4 id="_1">单引号（'''）</h4>
-<pre><code class="python">'''
-这是多行注释，用三个单引号
-这是多行注释，用三个单引号 
-这是多行注释，用三个单引号
-'''
+<pre><code class="java">//在指定时间内添加元素到队列中
+public boolean offer(E e, long timeout, TimeUnit unit)
+    throws InterruptedException {
+
+    if (e == null) throw new NullPointerException();
+    long nanos = unit.toNanos(timeout);
+    int c = -1;
+    final ReentrantLock putLock = this.putLock;
+    final AtomicInteger count = this.count;
+    putLock.lockInterruptibly();
+    try {
+        while (count.get() == capacity) {
+            if (nanos &lt;= 0)
+                return false;
+            nanos = notFull.awaitNanos(nanos);
+        }
+        enqueue(new Node&lt;E&gt;(e));
+        c = count.getAndIncrement();
+        if (c + 1 &lt; capacity)
+            notFull.signal();
+    } finally {
+        putLock.unlock();
+    }
+    if (c == 0)
+        signalNotEmpty();
+    return true;
+}
 </code></pre>
 
-<h4 id="_2">双引号（"""）</h4>
-<pre><code class="python">&quot;&quot;&quot;
-这是多行注释，用三个双引号
-这是多行注释，用三个双引号 
-这是多行注释，用三个双引号
-&quot;&quot;&quot;
+<pre><code class="java">// 非阻塞式添加元素到指定队列,如果队列已满,返回false
+public boolean offer(E e) {
+    if (e == null) throw new NullPointerException();
+    final AtomicInteger count = this.count;
+    if (count.get() == capacity)
+        return false;
+    int c = -1;
+    Node&lt;E&gt; node = new Node&lt;E&gt;(e);
+    final ReentrantLock putLock = this.putLock;
+    putLock.lock();
+    try {
+        if (count.get() &lt; capacity) {
+            enqueue(node);
+            c = count.getAndIncrement();
+            if (c + 1 &lt; capacity)
+                notFull.signal();
+        }
+    } finally {
+        putLock.unlock();
+    }
+    if (c == 0)
+        signalNotEmpty();
+    return c &gt;= 0;
+}
 </code></pre>
 
-<p>切记一点，要在文件开头加上文件编码，否则有中文字符就会出错
-<code># -*- coding:utf-8 -*-</code><br />
-<code># coding=utf-8</code></p></div>
+<pre><code class="java">//阻塞式获取并移除队列中的第一个元素
+public E take() throws InterruptedException {
+    E x;
+    int c = -1;
+    final AtomicInteger count = this.count;
+    final ReentrantLock takeLock = this.takeLock;
+    takeLock.lockInterruptibly();
+    try {
+        while (count.get() == 0) {
+            notEmpty.await();
+        }
+        x = dequeue();
+        c = count.getAndDecrement();
+        if (c &gt; 1)
+            notEmpty.signal();
+    } finally {
+        takeLock.unlock();
+    }
+    if (c == capacity)
+        signalNotFull();
+    return x;
+}
+</code></pre>
+
+<pre><code class="java">//非阻塞式获取并移除队列中的第一个元素
+public E poll() {
+    final AtomicInteger count = this.count;
+    if (count.get() == 0)
+        return null;
+    E x = null;
+    int c = -1;
+    final ReentrantLock takeLock = this.takeLock;
+    takeLock.lock();
+    try {
+        if (count.get() &gt; 0) {
+            x = dequeue();
+            c = count.getAndDecrement();
+            if (c &gt; 1)
+                notEmpty.signal();
+        }
+    } finally {
+        takeLock.unlock();
+    }
+    if (c == capacity)
+        signalNotFull();
+    return x;
+}
+</code></pre>
+
+<pre><code class="java">//非阻塞式获取队列的第一个元素,如果为空返回null
+public E peek() {
+    if (count.get() == 0)
+        return null;
+    final ReentrantLock takeLock = this.takeLock;
+    takeLock.lock();
+    try {
+        Node&lt;E&gt; first = head.next;
+        if (first == null)
+            return null;
+        else
+            return first.item;
+    } finally {
+        takeLock.unlock();
+    }
+}
+</code></pre>
+
+<pre><code class="java">//移除指定元素
+public boolean remove(Object o) {
+    if (o == null) return false;
+    fullyLock();
+    try {
+        for (Node&lt;E&gt; trail = head, p = trail.next;
+             p != null;
+             trail = p, p = p.next) {
+            if (o.equals(p.item)) {
+                unlink(p, trail);
+                return true;
+            }
+        }
+        return false;
+    } finally {
+        fullyUnlock();
+    }
+}
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

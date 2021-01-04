@@ -2,72 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/注释/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/元组与列表/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/字符串/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/字典/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/条件控制与循环结构/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/python/基础教程/函数/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/java/String/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/ReentrantLock/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/Queue/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/BlockingQueue/</loc>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://ch3nwe1.github.io/scaresrow/java/Collection/PriorityQueue/</loc>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc></loc>
-     
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/ArrayBlockingQueue/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/DelayQueue/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/PriorityBlockingQueue/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/FutureTask/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/JUC/ThreadPoolExecutor/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/jaxws/jaxws-2.3.pdf</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/java/jaxws/jax-ws-release-documentation.pdf</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/Redis/redis command/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/Redis/redis-replication/</loc>
+     <lastmod>2021-01-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://ch3nwe1.github.io/scaresrow/VIM/vim/</loc>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://ch3nwe1.github.io/scaresrow/about/</loc>
-     <lastmod>2020-11-30</lastmod>
+     <lastmod>2021-01-04</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

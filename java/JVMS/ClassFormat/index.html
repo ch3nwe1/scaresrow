@@ -106,12 +106,46 @@
 </li>
             
 <li >
-    <a href="/java/JUC/BlockingQueue.md">Blocking</a>
+    <a href="../../JUC/BlockingQueue/">Blocking</a>
 </li>
             
 <li >
-    <a href="/java/Collection/PriorityQueue.md">PriorityQueue</a>
+    <a href="../../Collection/PriorityQueue/">PriorityQueue</a>
 </li>
+            
+<li >
+    <a href="../../JUC/ArrayBlockingQueue/">ArrayBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/DelayQueue/">DelayQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/PriorityBlockingQueue/">PriorityBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/FutureTask/">FutureTask</a>
+</li>
+            
+<li >
+    <a href="../../JUC/ThreadPoolExecutor/">ThreadPoolExecutor</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">jaxws</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../jaxws/jaxws-2.3.pdf">jaxws-2.3</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/jax-ws-release-documentation.pdf">release-documentation</a>
+</li>
+    </ul>
+  </li>
     </ul>
   </li>
                                     
@@ -120,7 +154,21 @@
     <ul class="dropdown-menu">
             
 <li >
-    <a href="../../../redis-replication Redis/redis-replication.md">None</a>
+    <a href="../../../Redis/redis command/">redis command</a>
+</li>
+            
+<li >
+    <a href="../../../Redis/redis-replication/">redis-replication</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">VIM</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../VIM/vim/">VIM</a>
 </li>
     </ul>
   </li>
@@ -151,6 +199,11 @@
             <li><a href="#_3">反编译文件</a></li>
             <li><a href="#_4">字节码文件结构</a></li>
         <li class="main "><a href="#1-fieldref-428-1-428">1 = Fieldref           #4.#28 // #1 代表第一个索引,#4,#28现在还不清楚,先不要着急,慢慢的分析</a></li>
+            <li><a href="#access_flagsu2">access_flags(u2)</a></li>
+            <li><a href="#this_classu2">this_class(u2)</a></li>
+            <li><a href="#super_classu2">super_class(u2)</a></li>
+            <li><a href="#interfaces_countu2">interfaces_count(u2)</a></li>
+            <li><a href="#interfacesinterfaces_count">interfaces[interfaces_count]</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -500,13 +553,15 @@ SourceFile: &quot;Student.java&quot;
 </tbody>
 </table>
 <p>下面介绍每一个tag对应的info数组</p>
-<pre><code>CONSTANT_Class_info {
+<pre><code class="json">//占用三个字节
+CONSTANT_Class_info {
     u1 tag;
     u2 name_index; # 指向常量池表中的索引
 }
 </code></pre>
 
-<pre><code>CONSTANT_Fieldref_info {
+<pre><code class="json">//占用五个字节
+CONSTANT_Fieldref_info {
  u1 tag;
  u2 class_index; //所属类的索引
  u2 name_and_type_index; 名字和类型的索引
@@ -523,13 +578,15 @@ CONSTANT_InterfaceMethodref_info {
 }
 </code></pre>
 
-<pre><code>CONSTANT_String_info {
+<pre><code class="json">//占用三个字节
+CONSTANT_String_info {
  u1 tag;
  u2 string_index; //字符串索引
 }
 </code></pre>
 
-<pre><code>CONSTANT_Integer_info {
+<pre><code class="java">//占用五个字节
+CONSTANT_Integer_info {
  u1 tag;
  u4 bytes;
 }
@@ -539,44 +596,135 @@ CONSTANT_Float_info {
 }
 </code></pre>
 
-<pre><code>CONSTANT_NameAndType_info {
+<pre><code class="java">//5个字节
+CONSTANT_NameAndType_info {
  u1 tag;
  u2 name_index; // 名称索引
  u2 descriptor_index; // 描述符索引
 }
 </code></pre>
 
-<pre><code>CONSTANT_Utf8_info {
+<pre><code class="java">//非固定长度
+CONSTANT_Utf8_info {
  u1 tag;
  u2 length;
  u1 bytes[length];
 }
 </code></pre>
 
-<pre><code>CONSTANT_MethodHandle_info {
+<pre><code class="java">// 4个字节
+CONSTANT_MethodHandle_info {
  u1 tag;
  u1 reference_kind;
  u2 reference_index;
 }
 </code></pre>
 
-<pre><code>CONSTANT_MethodType_info {
+<pre><code class="java">//3个字节
+CONSTANT_MethodType_info {
  u1 tag;
  u2 descriptor_index;
 }
 </code></pre>
 
-<pre><code>CONSTANT_InvokeDynamic_info {
+<pre><code class="java">//5个字节
+CONSTANT_InvokeDynamic_info {
  u1 tag;
  u2 bootstrap_method_attr_index;
  u2 name_and_type_index;
 }
 </code></pre>
 
+<pre><code class="java">//9个字节
+CONSTANT_Long_info {
+ u1 tag;
+ u4 high_bytes;
+ u4 low_bytes;
+}
+CONSTANT_Double_info {
+ u1 tag;
+ u4 high_bytes;
+ u4 low_bytes;
+}
+</code></pre>
+
 <p>紧随常量池数量后面的字节是<strong><code>09</code></strong>, 代表是一个<code>CONSTANT_Fieldref</code>,其格式包含1个字节的tag, 2个字节的<code>class_index</code>(<strong><code>00 04</code></strong>)和2个字节的<code>name_and_type_index</code>(<strong><code>00 1C</code></strong>),所以常量池表的第一个常量分析完毕,正好与反编译文件对应</p>
 <blockquote>
 <h1 id="1-fieldref-428-1-428">1 = Fieldref           #4.#28 // #1 代表第一个索引,#4,#28现在还不清楚,先不要着急,慢慢的分析</h1>
-</blockquote></div>
+</blockquote>
+<h3 id="access_flagsu2">access_flags(u2)</h3>
+<p>继常量池后的是2个字节的访问标识符</p>
+<table>
+<thead>
+<tr>
+<th>flag_name</th>
+<th>VALUE</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACC_PUBLIC</td>
+<td>0x0001</td>
+<td>声明public,可以在包的外面访问</td>
+</tr>
+<tr>
+<td>ACC_FINAL</td>
+<td>0x0010</td>
+<td>不能被继承</td>
+</tr>
+<tr>
+<td>ACC_SUPER</td>
+<td>0x0020</td>
+<td>当被invokespecial指定调用时,针对特殊的父类方法</td>
+</tr>
+<tr>
+<td>ACC_INTERFACE</td>
+<td>0x0200</td>
+<td>声明为一个接口,二不是一个类</td>
+</tr>
+<tr>
+<td>ACC_ABSTRACT</td>
+<td>0x0400</td>
+<td>抽象类,不能被实例化</td>
+</tr>
+<tr>
+<td>ACC_SYNTHETIC</td>
+<td>0x1000</td>
+<td>不会在源代码中出现,通过编译生成</td>
+</tr>
+<tr>
+<td>ACC_ANNOTATION</td>
+<td>0x2000</td>
+<td>声明为注解</td>
+</tr>
+<tr>
+<td>ACC_ENUM</td>
+<td>0x4000</td>
+<td>声明为一个枚举类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="this_classu2">this_class(u2)</h3>
+<p>2个字节的索引,指向常量池中的CONSTANT_Class_info,class_info的结构上文已经提过,在这里再说一下,class_info包含1个字节的tag和2个字节的索引指向常量池中CONSTANT_Utf8_info 常量</p>
+<pre><code class="java">CONSTANT_Class_info {
+    u1 tag; // (7)
+    u2 name_index;
+}
+
+CONSTANT_Utf8_info {
+ u1 tag; //(1)
+ u2 length;
+ u1 bytes[length];
+}
+</code></pre>
+
+<h3 id="super_classu2">super_class(u2)</h3>
+<p>2个字节的索引,指向常量池中的CONSTANT_Class_info,class_info</p>
+<h3 id="interfaces_countu2">interfaces_count(u2)</h3>
+<p>2个字节,其值代表类实现接口的数量</p>
+<h3 id="interfacesinterfaces_count">interfaces[interfaces_count]</h3>
+<p>按照源码中实现接口的顺序,每个接口的信息占用两个字节,其值指向常量池中的索引,(CONSTANT_Class_info)</p></div>
         </div>
 
         <footer class="col-md-12">
