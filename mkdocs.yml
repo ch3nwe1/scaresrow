@@ -23,6 +23,9 @@ nav:
         - PriorityBlockingQueue: java/JUC/PriorityBlockingQueue.md
         - FutureTask: java/JUC/FutureTask.md
         - ThreadPoolExecutor: java/JUC/ThreadPoolExecutor.md  
+        - jaxws:
+            - jaxws-2.3: java/jaxws/jaxws-2.3.pdf
+            - release-documentation: java/jaxws/jax-ws-release-documentation.pdf
       - Redis:
         - redis command: Redis/redis command.md
         - redis-replication: Redis/redis-replication.md
