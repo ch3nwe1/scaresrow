@@ -26,11 +26,19 @@ nav:
         - jaxws:
             - jaxws-2.3: java/jaxws/jaxws-2.3.pdf
             - release-documentation: java/jaxws/jax-ws-release-documentation.pdf
+            - jaxb: java/jaxws/JAXB-2.3-spec.pdf
+            - jaxrs: java/jaxws/jaxrs-2_1-final-spec.pdf
+            - jaxws-2.0: java/jaxws/jaxws-2_0-fr-spec.pdf
+            - jsr: java/jaxws/JSR181-2.1-MR.pdf
+            - web service: java/jaxws/Web Service Definition Language (WSDL).pdf
       - Redis:
         - redis command: Redis/redis command.md
         - redis-replication: Redis/redis-replication.md
       - VIM:
         - VIM: VIM/vim.md
+      - XML:
+        - xml-structures: xml/W3C XML Schema Definition Language (XSD) 1.1 Part 1_ Structures.pdf
+        - xml-datatypes: xml/W3C XML Schema Definition Language (XSD) 1.1 Part 2_ Datatypes.pdf
     - 关于: about.md
 
 
