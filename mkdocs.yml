@@ -34,6 +34,7 @@ nav:
       - Redis:
         - redis command: Redis/redis command.md
         - redis-replication: Redis/redis-replication.md
+        - redis-design: Redis/redis客户端程序设计.md
       - VIM:
         - VIM: VIM/vim.md
       - XML:
