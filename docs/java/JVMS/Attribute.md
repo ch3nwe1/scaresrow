@@ -182,3 +182,89 @@ SourceFile: "CodeAttribute.java"
 
 字节码文件：
 
+![](/home/amarsoft/md-docs/myself/scaresrow/docs/java/JVMS/assets/CodeAttribute.png)
+
+### attribute_name_index
+
+​	是一项指向CONSTANT_Utf8-info型常量的索引，此项值固定为"Code",它代表了该属性的属性名称，该值占用两个字节
+
+​	
+
+```properties
+00 0C #12 
+```
+
+### attribute_length
+
+​	指示了该属性值的长度，由于属性名称索引与属性长度一共为6个字节，所以属性值的长度固定为整个属性表长度减去6个字节
+
+​	00 00 01 15  =================>>>>> 277个字节
+
+```properties
+00 00 01 15  #277
+```
+
+### max_stack
+
+是指操作数栈的最大深度，在方法执行的任意时刻，操作数栈都不会超过这个深度，虚拟机运行的时候根据这个值来分配栈帧中的操作栈深度。
+
+```properties
+00 02 # 2
+```
+
+max_locals
+
+代表了局部变量表所需的存储空间，单位是Slot
+
+```properties
+00 06 #6
+```
+
+### code_length
+
+占用四个字节，代表字节码的长度
+
+```properties
+00 00 00 30 #48
+```
+
+### code
+
+java字节码指令
+
+```properties
+03 iconst_0 将常量0添加到操作数栈
+3E istore_3 存储操作数栈的值进入局部变量表的第4个位置
+1B iload_1 加载第2个索引的变量值到操作数栈
+1C iload_2 从局部变量表加载第3个变量值到操作数栈顶
+6C idiv 将栈顶的两个元素从栈顶弹出，作除法，然后再放回栈顶
+3E istore_3 将栈顶的元素存储到第4个局部变量索引处
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 将栈顶元素弹出添加到局部变量表的第4个索引位置，也就是变量c
+A7 00 25 | goto 46 goto用于跳转指令到指定位置 后面两个字节组成一个无符号类型数 00 << 8 | 25 
+3A 04 | astore 4 存储栈顶值到局部变量第5个索引处
+19 04 | aload 从局部变量表第5个索引处加载引用类型对象到操作数栈顶
+B6 00 07 | invokevirtual 07 调用方法printStackTrace 07为常量池中的索引
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 将栈顶元素弹出添加到局部变量表的第4个索引位置，也就是变量c
+A7 00 25 | goto 46 goto用于跳转指令到指定位置 后面两个字节组成一个无符号类型数 00 << 8 | 25 
+3A 05 | astore 5 存储对象到第6个索引的局部变量
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 存储栈顶元素到局部量表第四个索引
+19 05 | aload 5 从局部变量表第6个索引到栈顶元素
+BF athrow 从栈顶元素弹出异常对象抛出
+1D iload_3 从局部变量表加载第4个变量到栈顶
+AC iretutn 返回栈顶的int值 
+```
+
+### exception_table_length
+
+​	代码体中异常表的长度，占用4个字节
+
+```properties
+00 06 # 6个异常
+```
+
+
+
+​	
