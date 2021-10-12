@@ -333,7 +333,7 @@ CONSTANT_Class_info {
 CONSTANT_Fieldref_info {
  u1 tag;
  u2 class_index; //所属类的索引
- u2 name_and_type_index; 名字和类型的索引
+ u2 name_and_type_index; //名字和类型的索引
 }
 CONSTANT_Methodref_info {
  u1 tag;
@@ -476,4 +476,76 @@ CONSTANT_Utf8_info {
 ### interfaces[interfaces_count]
 
 按照源码中实现接口的顺序,每个接口的信息占用两个字节,其值指向常量池中的索引,(CONSTANT_Class_info)
+
+### fields_count（u2）
+
+代表类属性数量，占用两个字节
+
+### field_info 
+
+fields[fields_count]
+
+### methods_count(u2)
+
+方法数量
+
+### method_info 
+
+methods[methods_count]
+
+### attributes_count
+
+类属性数量
+
+### attribute_info
+
+attributes[attributes_count];
+
+#### SOURCE_FILE
+
+```json
+SourceFile_attribute {
+ u2 attribute_name_index; // 属性名索引
+ u4 attribute_length; // 属性值长度 固定为2
+ u2 sourcefile_index; // 指向常量池的索引
+}
+```
+
+#### INNER_CLASSES
+
+```json
+InnerClasses_attribute {
+ u2 attribute_name_index;
+ u4 attribute_length;
+ u2 number_of_classes;
+ { 
+ 	u2 inner_class_info_index; # 内部类索引
+ 	u2 outer_class_info_index; # 外部类索引
+ 	u2 inner_name_index;  # 内部类名称索引
+ 	u2 inner_class_access_flags; # 访问标识符
+ } classes[number_of_classes];
+}
+```
+
+####  RuntimeVisibleAnnotations
+
+```json
+RuntimeVisibleAnnotations_attribute {
+ u2 attribute_name_index; # 属性名索引，指向常量池 固定为 RuntimeVisibleAnnotations
+ u4 attribute_length; # 属性长度 所有注解信息占用的字节数
+ u2 num_annotations; # 注解数量
+ annotation annotations[num_annotations];# 注解数组，元素是注解对象
+}
+```
+
+```json
+# 注解对象
+annotation {
+ u2 type_index;# 类型索引，指向常量池UTF-8索引，标识字段描述符
+ u2 num_element_value_pairs;
+ { u2 element_name_index;
+ element_value value;
+ } element_value_pairs[num_element_value_pairs];
+}
+```
 
