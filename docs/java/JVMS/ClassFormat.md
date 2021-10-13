@@ -541,11 +541,52 @@ RuntimeVisibleAnnotations_attribute {
 ```json
 # 注解对象
 annotation {
- u2 type_index;# 类型索引，指向常量池UTF-8索引，标识字段描述符
- u2 num_element_value_pairs;
- { u2 element_name_index;
- element_value value;
+ u2 type_index;# 类型索引，指向常量池UTF-8索引，注解类型描述符
+ u2 num_element_value_pairs; # 属性数量
+ { 
+    u2 element_name_index; # 常量索引 属性名
+ 	element_value value; # 属性值对象
  } element_value_pairs[num_element_value_pairs];
 }
 ```
+
+```json
+# 注解属性值对象
+element_value {
+ u1 tag; # 值类型，看下表
+ union {
+ 	u2 const_value_index; # 指向常量池的索引
+    
+     { 
+        u2 type_name_index; # 索引，指向枚举类型
+        u2 const_name_index; # 常量池索引， 指向枚举值
+     } enum_const_value;
+
+ 	u2 class_info_index; # 常量池索引， class 描述符
+
+ 	annotation annotation_value; # '@' 注解对象 
+
+     { 
+         u2 num_values; # 数组数量
+     	 element_value values[num_values]; # 元素对象
+     } array_value;
+ } value;
+}
+```
+
+| tag  | Type            | value             | constant_type    |
+| ---- | --------------- | ----------------- | ---------------- |
+| B    | byte            | const_value_index | CONSTANT_Integer |
+| C    | char            | const_value_index | CONSTANT_Integer |
+| D    | double          | const_value_index | CONSTANT_Double  |
+| F    | float           | const_value_index | CONSTANT_Float   |
+| I    | int             | const_value_index | CONSTANT_Integer |
+| J    | long            | const_value_index | CONSTANT_Long    |
+| S    | short           | const_value_index | CONSTANT_Integer |
+| Z    | boolean         | const_value_index | CONSTANT_Integer |
+| s    | String          | const_value_index | CONSTANT_Utf8    |
+| e    | Enum type       | enum_const_value  |                  |
+| c    | Class           | class_info_index  |                  |
+| @    | Annotation type | annotation_value  |                  |
+| [    | Array type      | array_value       |                  |
 
