@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://ch3nwe1.github.io/scaresrow/java/JVMS/Attribute/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Attribute - 稻草人日记</title>
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../..">稻草人日记</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../../..">主页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">程序 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Python</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#">基础教程</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../python/基础教程/注释/">注释</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/元组与列表/">元组与列表</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/字符串/">字符串</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/字典/">字典</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/条件控制与循环结构/">条件控制和循环结构</a>
+</li>
+            
+<li >
+    <a href="../../../python/基础教程/函数/">函数</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Java</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../String/">字符串</a>
+</li>
+            
+<li >
+    <a href="../../JUC/ReentrantLock/">ReentrantLock</a>
+</li>
+            
+<li >
+    <a href="../../JUC/Queue/">Queue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/BlockingQueue/">Blocking</a>
+</li>
+            
+<li >
+    <a href="../../Collection/PriorityQueue/">PriorityQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/ArrayBlockingQueue/">ArrayBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/DelayQueue/">DelayQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/PriorityBlockingQueue/">PriorityBlockingQueue</a>
+</li>
+            
+<li >
+    <a href="../../JUC/FutureTask/">FutureTask</a>
+</li>
+            
+<li >
+    <a href="../../JUC/ThreadPoolExecutor/">ThreadPoolExecutor</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#">jaxws</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../jaxws/jaxws-2.3.pdf">jaxws-2.3</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/jax-ws-release-documentation.pdf">release-documentation</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/JAXB-2.3-spec.pdf">jaxb</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/jaxrs-2_1-final-spec.pdf">jaxrs</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/jaxws-2_0-fr-spec.pdf">jaxws-2.0</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/JSR181-2.1-MR.pdf">jsr</a>
+</li>
+            
+<li >
+    <a href="../../jaxws/Web Service Definition Language (WSDL).pdf">web service</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">Redis</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../Redis/redis command/">redis command</a>
+</li>
+            
+<li >
+    <a href="../../../Redis/redis-replication/">redis-replication</a>
+</li>
+            
+<li >
+    <a href="../../../Redis/redis客户端程序设计/">redis-design</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">VIM</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../VIM/vim/">VIM</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#">XML</a>
+    <ul class="dropdown-menu">
+            
+<li >
+    <a href="../../../xml/W3C XML Schema Definition Language (XSD) 1.1 Part 1_ Structures.pdf">xml-structures</a>
+</li>
+            
+<li >
+    <a href="../../../xml/W3C XML Schema Definition Language (XSD) 1.1 Part 2_ Datatypes.pdf">xml-datatypes</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li >
+                                <a href="../../../about/">关于</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#code">Code</a></li>
+            <li><a href="#attribute_name_index">attribute_name_index</a></li>
+            <li><a href="#attribute_length">attribute_length</a></li>
+            <li><a href="#max_stack">max_stack</a></li>
+            <li><a href="#code_length">code_length</a></li>
+            <li><a href="#code_1">code</a></li>
+            <li><a href="#exception_table_length">exception_table_length</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h2 id="code">Code</h2>
+<p>​   Java程序方法体里面的代码经过Javac编译处理后，最终变成字节码指令存储在Code属性内。Code属性出现在方法表的属性集合之中，并非所有的方法都必须存在这个属性，譬如接口和或者抽象类中的方法就不存在Code属性，如果方法内有Code属性存在，他的结构如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">名称</th>
+<th align="center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">u2</td>
+<td align="center">attribute_name_index</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">u4</td>
+<td align="center">attribute_length</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">max_stack</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">max_locals</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">u4</td>
+<td align="center">code_length</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">u1</td>
+<td align="center">code</td>
+<td align="center">code_length</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">exception_table_length</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">exception_info</td>
+<td align="center">exception_table</td>
+<td align="center">exception_table_length</td>
+</tr>
+<tr>
+<td align="center">u2</td>
+<td align="center">attributes_count</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">attribute_info</td>
+<td align="center">attributes</td>
+<td align="center">attributes_count</td>
+</tr>
+</tbody>
+</table>
+<p>源代码：</p>
+<pre><code class="java">public class CodeAttribute {
+
+    public int divide(int a, int b) {
+        int c = 0;
+        try {
+            c = a / b;
+        } catch (ArithmeticException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            c = Integer.MIN_VALUE;
+        }
+        return c;
+    }
+}
+</code></pre>
+
+<p>javap -verbose</p>
+<pre><code class="java">public class com.asm.test.CodeAttribute
+  minor version: 0
+  major version: 52
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+   #1 = Methodref          #9.#33         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+   #2 = Class              #34            // java/lang/Integer
+   #3 = Integer            -2147483648
+   #4 = Class              #35            // java/lang/ArithmeticException
+   #5 = Methodref          #4.#36         // java/lang/ArithmeticException.printStackTrace:()V
+   #6 = Class              #37            // java/lang/Exception
+   #7 = Methodref          #6.#36         // java/lang/Exception.printStackTrace:()V
+   #8 = Class              #38            // com/asm/test/CodeAttribute
+   #9 = Class              #39            // java/lang/Object
+  #10 = Utf8               &lt;init&gt;
+  #11 = Utf8               ()V
+  #12 = Utf8               Code
+  #13 = Utf8               LineNumberTable
+  #14 = Utf8               LocalVariableTable
+  #15 = Utf8               this
+  #16 = Utf8               Lcom/asm/test/CodeAttribute;
+  #17 = Utf8               divide
+  #18 = Utf8               (II)I
+  #19 = Utf8               ex
+  #20 = Utf8               Ljava/lang/ArithmeticException;
+  #21 = Utf8               Ljava/lang/Exception;
+  #22 = Utf8               a
+  #23 = Utf8               I
+  #24 = Utf8               b
+  #25 = Utf8               c
+  #26 = Utf8               StackMapTable
+  #27 = Class              #38            // com/asm/test/CodeAttribute
+  #28 = Class              #35            // java/lang/ArithmeticException
+  #29 = Class              #37            // java/lang/Exception
+  #30 = Class              #40            // java/lang/Throwable
+  #31 = Utf8               SourceFile
+  #32 = Utf8               CodeAttribute.java
+  #33 = NameAndType        #10:#11        // &quot;&lt;init&gt;&quot;:()V
+  #34 = Utf8               java/lang/Integer
+  #35 = Utf8               java/lang/ArithmeticException
+  #36 = NameAndType        #41:#11        // printStackTrace:()V
+  #37 = Utf8               java/lang/Exception
+  #38 = Utf8               com/asm/test/CodeAttribute
+  #39 = Utf8               java/lang/Object
+  #40 = Utf8               java/lang/Throwable
+  #41 = Utf8               printStackTrace
+{
+  public com.asm.test.CodeAttribute();
+    descriptor: ()V
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+         4: return
+      LineNumberTable:
+        line 3: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/asm/test/CodeAttribute;
+
+  public int divide(int, int);
+    descriptor: (II)I
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=6, args_size=3
+         0: iconst_0
+         1: istore_3
+         2: iload_1
+         3: iload_2
+         4: idiv
+         5: istore_3
+         6: ldc           #3                  // int -2147483648
+         8: istore_3
+         9: goto          46
+        12: astore        4
+        14: aload         4
+        16: invokevirtual #5                  // Method java/lang/ArithmeticException.printStackTrace:()V
+        19: ldc           #3                  // int -2147483648
+        21: istore_3
+        22: goto          46
+        25: astore        4
+        27: aload         4
+        29: invokevirtual #7                  // Method java/lang/Exception.printStackTrace:()V
+        32: ldc           #3                  // int -2147483648
+        34: istore_3
+        35: goto          46
+        38: astore        5
+        40: ldc           #3                  // int -2147483648
+        42: istore_3
+        43: aload         5
+        45: athrow
+        46: iload_3
+        47: ireturn
+      Exception table:
+         from    to  target type
+             2     6    12   Class java/lang/ArithmeticException
+             2     6    25   Class java/lang/Exception
+             2     6    38   any
+            12    19    38   any
+            25    32    38   any
+            38    40    38   any
+      LineNumberTable:
+        line 6: 0
+        line 8: 2
+        line 14: 6
+        line 15: 9
+        line 9: 12
+        line 10: 14
+        line 14: 19
+        line 15: 22
+        line 11: 25
+        line 12: 27
+        line 14: 32
+        line 15: 35
+        line 14: 38
+        line 15: 43
+        line 16: 46
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           14       5     4    ex   Ljava/lang/ArithmeticException;
+           27       5     4    ex   Ljava/lang/Exception;
+            0      48     0  this   Lcom/asm/test/CodeAttribute;
+            0      48     1     a   I
+            0      48     2     b   I
+            2      46     3     c   I
+      StackMapTable: number_of_entries = 4
+        frame_type = 255 /* full_frame */
+          offset_delta = 12
+          locals = [ class com/asm/test/CodeAttribute, int, int, int ]
+          stack = [ class java/lang/ArithmeticException ]
+        frame_type = 76 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Exception ]
+        frame_type = 76 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Throwable ]
+        frame_type = 7 /* same */
+}
+SourceFile: &quot;CodeAttribute.java&quot;
+
+</code></pre>
+
+<p>字节码文件：</p>
+<p><img alt="" src="/home/amarsoft/md-docs/myself/scaresrow/docs/java/JVMS/assets/CodeAttribute.png" /></p>
+<h3 id="attribute_name_index">attribute_name_index</h3>
+<p>​   是一项指向CONSTANT_Utf8-info型常量的索引，此项值固定为"Code",它代表了该属性的属性名称，该值占用两个字节</p>
+<p>​   </p>
+<pre><code class="properties">00 0C #12 
+</code></pre>
+
+<h3 id="attribute_length">attribute_length</h3>
+<p>​   指示了该属性值的长度，由于属性名称索引与属性长度一共为6个字节，所以属性值的长度固定为整个属性表长度减去6个字节</p>
+<p>​   00 00 01 15  =================&gt;&gt;&gt;&gt;&gt; 277个字节</p>
+<pre><code class="properties">00 00 01 15  #277
+</code></pre>
+
+<h3 id="max_stack">max_stack</h3>
+<p>是指操作数栈的最大深度，在方法执行的任意时刻，操作数栈都不会超过这个深度，虚拟机运行的时候根据这个值来分配栈帧中的操作栈深度。</p>
+<pre><code class="properties">00 02 # 2
+</code></pre>
+
+<p>max_locals</p>
+<p>代表了局部变量表所需的存储空间，单位是Slot</p>
+<pre><code class="properties">00 06 #6
+</code></pre>
+
+<h3 id="code_length">code_length</h3>
+<p>占用四个字节，代表字节码的长度</p>
+<pre><code class="properties">00 00 00 30 #48
+</code></pre>
+
+<h3 id="code_1">code</h3>
+<p>java字节码指令</p>
+<pre><code class="properties">03 iconst_0 将常量0添加到操作数栈
+3E istore_3 存储操作数栈的值进入局部变量表的第4个位置
+1B iload_1 加载第2个索引的变量值到操作数栈
+1C iload_2 从局部变量表加载第3个变量值到操作数栈顶
+6C idiv 将栈顶的两个元素从栈顶弹出，作除法，然后再放回栈顶
+3E istore_3 将栈顶的元素存储到第4个局部变量索引处
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 将栈顶元素弹出添加到局部变量表的第4个索引位置，也就是变量c
+A7 00 25 | goto 46 goto用于跳转指令到指定位置 后面两个字节组成一个无符号类型数 00 &lt;&lt; 8 | 25 
+3A 04 | astore 4 存储栈顶值到局部变量第5个索引处
+19 04 | aload 从局部变量表第5个索引处加载引用类型对象到操作数栈顶
+B6 00 07 | invokevirtual 07 调用方法printStackTrace 07为常量池中的索引
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 将栈顶元素弹出添加到局部变量表的第4个索引位置，也就是变量c
+A7 00 25 | goto 46 goto用于跳转指令到指定位置 后面两个字节组成一个无符号类型数 00 &lt;&lt; 8 | 25 
+3A 05 | astore 5 存储对象到第6个索引的局部变量
+12 03 | ldc 03(index) ldc是指加载常量池中的值到操作数栈 03代表常量池的索引
+3E istore_3 存储栈顶元素到局部量表第四个索引
+19 05 | aload 5 从局部变量表第6个索引到栈顶元素
+BF athrow 从栈顶元素弹出异常对象抛出
+1D iload_3 从局部变量表加载第4个变量到栈顶
+AC iretutn 返回栈顶的int值 
+</code></pre>
+
+<h3 id="exception_table_length">exception_table_length</h3>
+<p>​   代码体中异常表的长度，占用4个字节</p>
+<pre><code class="properties">00 06 # 6个异常
+</code></pre>
+
+<p>​   </p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
